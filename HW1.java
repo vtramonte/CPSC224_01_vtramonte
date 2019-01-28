@@ -16,7 +16,6 @@ public class yahtzee {
 		char playAgain = 'y';
 		Scanner scnr = new Scanner(System.in);
 		
-		///////
 		
 		while (playAgain == 'y')
 		{
@@ -53,7 +52,6 @@ public class yahtzee {
 		        {
 		            System.out.println(hand[dieNumber] + " ");
 		        }
-		        //cout << endl;
 		    	System.out.println();
 		    //upper scorecard
 		    for (int dieValue = 1; dieValue <=6; dieValue++) {
