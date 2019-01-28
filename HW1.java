@@ -17,12 +17,10 @@ public class yahtzee {
 		Scanner scnr = new Scanner(System.in);
 		
 		
-		while (playAgain == 'y')
-		{
+		while (playAgain == 'y') {
 		    String keep = "nnnnn"; //setup to roll all dice in the first roll
 		    int turn = 1;
-		    while (turn < 4 && keep != "yyyyy")
-		    {
+		    while (turn < 4 && keep != "yyyyy") {
 		        //roll dice not kept
 		        for (int dieNumber = 0; dieNumber < DICE_IN_PLAY; dieNumber++) {
 		            if (keep.charAt(dieNumber) != 'y') {
@@ -31,8 +29,7 @@ public class yahtzee {
 		        }
 		        //output roll
 		        System.out.println( "Your roll was: ");
-		        for (int dieNumber = 0; dieNumber < DICE_IN_PLAY; dieNumber++)
-		        {
+		        for (int dieNumber = 0; dieNumber < DICE_IN_PLAY; dieNumber++) {
 		        	System.out.print(hand[dieNumber] + " ");
 		        }
 		        System.out.println();
@@ -48,8 +45,7 @@ public class yahtzee {
 
 		    sortArray(hand, DICE_IN_PLAY);
 		    System.out.println("Here is your sorted hand : ");
-		    for (int dieNumber = 0; dieNumber < DICE_IN_PLAY; dieNumber++)
-		        {
+		    for (int dieNumber = 0; dieNumber < DICE_IN_PLAY; dieNumber++) {
 		            System.out.println(hand[dieNumber] + " ");
 		        }
 		    	System.out.println();
