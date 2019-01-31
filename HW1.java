@@ -46,7 +46,7 @@ public class yahtzee {
 		    sortArray(hand, DICE_IN_PLAY);
 		    System.out.println("Here is your sorted hand : ");
 		    for (int dieNumber = 0; dieNumber < DICE_IN_PLAY; dieNumber++) {
-		            System.out.println(hand[dieNumber] + " ");
+		            System.out.print(hand[dieNumber] + " ");
 		        }
 		    	System.out.println();
 		    //upper scorecard
