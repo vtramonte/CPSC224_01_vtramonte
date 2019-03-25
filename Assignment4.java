@@ -10,10 +10,6 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
-/**
- *
- * @author vince
- */
 public class Assignment4 extends JFrame
 {
     private int mouseX = 0;
