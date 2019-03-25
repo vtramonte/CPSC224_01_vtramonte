@@ -31,7 +31,7 @@ public class Assignment4 extends JFrame
 
         //Add the Mouse and MouseMotion Listeners
         addMouseListener(new MyMouseListener());
-        //addMouseMotionListener(new MyMouseMotionListener());
+        addMouseMotionListener(new MyMouseMotionListener());
 
         setVisible(true);
     }
@@ -107,6 +107,17 @@ public class Assignment4 extends JFrame
         
     }
     
+    private class MyMouseMotionListener implements MouseMotionListener
+    {
+       public void mouseDragged(MouseEvent e)
+       {
+       }
+
+       public void mouseMoved(MouseEvent e)
+       {
+       }
+    }
+    
     public static void main(String[] args) 
     {
        new Assignment4();
@@ -114,4 +125,5 @@ public class Assignment4 extends JFrame
     }
     
 }
+
 
