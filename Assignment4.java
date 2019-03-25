@@ -10,10 +10,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
-/**
- *
- * @author vince
- */
+
 public class Assignment4 extends JFrame
 {
     private int mouseX = 0;
@@ -70,6 +67,7 @@ public class Assignment4 extends JFrame
     
     private class MyMouseListener implements MouseListener
     {
+        //when the mouse is clicked the mountains flip colors     
         public void mouseClicked(MouseEvent e)
         {
            mountainColor1 = new Color(0, 0, 0);
@@ -88,6 +86,7 @@ public class Assignment4 extends JFrame
         {
         }
 
+        //when the mouse enters the screen it becomes night time
         public void mouseEntered(MouseEvent e)
         {
             sunColor = new Color(255, 255, 255);
@@ -96,7 +95,8 @@ public class Assignment4 extends JFrame
             repaint();
         }
 
-        public void mouseExited(MouseEvent e)
+        //when the mouse leaves the screen it reverts back to daytime 
+        public void mouseExited(MouseEvent e) 
         {
             sunColor = new Color(0xff, 0xff, 0x14);
             skyColor = new Color(0, 255, 255);
