@@ -16,6 +16,7 @@ public class Assignment4 extends JFrame
     private int mouseX = 0;
     private int mouseY = 0;
 
+    private Color tempColor = new Color(255, 255, 255);
     private Color skyColor = new Color(0, 255, 255);
     private Color grassColor = new Color(0, 255, 0);
     private Color mountainColor1 = new Color(0x95, 0x2e, 0x8f); // warm purple 
@@ -70,8 +71,9 @@ public class Assignment4 extends JFrame
         //when the mouse is clicked the mountains flip colors     
         public void mouseClicked(MouseEvent e)
         {
-           mountainColor1 = new Color(0, 0, 0);
-           mountainColor2 = new Color (0x95, 0x2e, 0x8f);
+           tempColor = mountainColor1;
+           mountainColor1 = mountainColor2;
+           mountainColor2 = tempColor;
            repaint();
            
            // might want to write code to change colors back
@@ -92,15 +94,21 @@ public class Assignment4 extends JFrame
             sunColor = new Color(255, 255, 255);
             skyColor =  new Color(0x00, 0x03, 0x5b);  //  dark blue
             grassColor = new Color(0x03, 0x35, 0x00);  //  dark green
+            mountainColor1 = new Color(0x35, 0x06, 0x3e);  //  dark purple 
+            mountainColor2 = new Color(0, 0, 0);    //  black
             repaint();
         }
 
-        //when the mouse leaves the screen it reverts back to daytime 
+        //when the mouse leaves the screen it reverts back to original daytime 
         public void mouseExited(MouseEvent e) 
         {
             sunColor = new Color(0xff, 0xff, 0x14);
             skyColor = new Color(0, 255, 255);
             grassColor = new Color(0, 255, 0);
+            
+            
+            mountainColor1 = new Color(0x95, 0x2e, 0x8f);
+            mountainColor2 = new Color(0, 0, 0);
             repaint();
         }
         
@@ -125,5 +133,6 @@ public class Assignment4 extends JFrame
     }
     
 }
+
 
 
