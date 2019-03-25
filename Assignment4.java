@@ -26,12 +26,10 @@ public class Assignment4 extends JFrame implements ActionListener
     private Timer timer;
     
     // parallax values
-    private int mountainParallax1 = 50;
-    private int mountainParallax2 = 50;
+    private int mountainParallax1 = 70;
+    private int mountainParallax2 = 30;
     
-    private int moonParallax = 5;
-    
-    private int grassParallax = 50;
+    private int moonParallax = 450;
     
     
     
@@ -80,7 +78,7 @@ public class Assignment4 extends JFrame implements ActionListener
       for (int i = 0; i < 3; i++) 
       {
           x[i] += mouseX / mountainParallax1;
-          y[i] += mouseY/ mountainParallax1;
+          y[i] += mouseY / mountainParallax1;
           x1[i] += mouseX / mountainParallax2;
           y1[i] += mouseY / mountainParallax2;
       }
@@ -92,6 +90,12 @@ public class Assignment4 extends JFrame implements ActionListener
       g.setColor(mountainColor2);        // color purple mountain
       g.fillPolygon(x1, y1, npoints);     // create left mountain
       
+      // draw new moon
+      g.setColor(sunColor);               // create sun
+      g.fillOval(750 + (mouseX/moonParallax), 100 + (mouseY/moonParallax), 100, 100);
+      
+      
+      // paint the grass last
       g.setColor(grassColor);           // set grass color
       g.fillRect(0, 350, 1000, 150);    // create grass
       
