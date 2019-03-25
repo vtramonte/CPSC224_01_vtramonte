@@ -27,7 +27,7 @@ public class Assignment4 extends JFrame implements ActionListener
     int birdX = 400;
     int birdX2 = 415;
     
-    private int delay = 10;
+    private int delay = 40;
     protected Timer timer;
     
     // parallax values
