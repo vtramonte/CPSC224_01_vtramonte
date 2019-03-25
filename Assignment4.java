@@ -1,10 +1,12 @@
-/***************
+
+/********s*******
 Homework #4
 Due Date: 3/25/2019
 Names: Vincent Tramonte, Vincent Rettke
 ********************/
 
-package assignment4;
+package motionParallax;
+//package motionparallaxmain;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -21,6 +23,9 @@ public class Assignment4 extends JFrame implements ActionListener
     private Color mountainColor1 = new Color(0x95, 0x2e, 0x8f); // warm purple 
     private Color mountainColor2 = new Color(0, 0, 0); // black
     private Color sunColor = new Color(0xff, 0xff, 0x14);  // yellow
+ 
+    int birdX = 400;
+    int birdX2 = 415;
     
     private int delay = 40;
     private Timer timer;
@@ -74,6 +79,11 @@ public class Assignment4 extends JFrame implements ActionListener
       g.setColor(sunColor);               // create sun
       g.fillOval(750, 100, 100, 100);
       
+      //draw bird 
+      g.setColor(Color.BLACK);
+      g.drawLine(birdX, 70, birdX2, 80);
+      g.drawLine(birdX + 15,80, birdX2 + 15, 70);
+      
       // calculates the parallax values for all the mountains
       for (int i = 0; i < 3; i++) 
       {
@@ -118,7 +128,6 @@ public class Assignment4 extends JFrame implements ActionListener
            mountainColor2 = tempColor;
            repaint();
            
-           // might want to write code to change colors back
         }
         
         public void mousePressed(MouseEvent e)
@@ -151,6 +160,8 @@ public class Assignment4 extends JFrame implements ActionListener
             
             mountainColor1 = new Color(0x95, 0x2e, 0x8f);
             mountainColor2 = new Color(0, 0, 0);
+        	mouseX = 0;
+        	mouseY = 0; 
             repaint();
         }
         
