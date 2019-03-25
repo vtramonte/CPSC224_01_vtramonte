@@ -10,16 +10,20 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
+/**
+ *
+ * @author vince
+ */
 public class Assignment4 extends JFrame
 {
     private int mouseX = 0;
     private int mouseY = 0;
 
     private Color skyColor = new Color(0, 255, 255);
-    private Color green = new Color(0, 255, 0);
+    private Color grassColor = new Color(0, 255, 0);
     private Color mountainColor1 = new Color(0x95, 0x2e, 0x8f); // warm purple 
     private Color mountainColor2 = new Color(0, 0, 0); // black
-    private Color yellow = new Color(0xff, 0xff, 0x14);  // yellow
+    private Color sunColor = new Color(0xff, 0xff, 0x14);  // yellow
     
     Assignment4()
     {
@@ -43,7 +47,7 @@ public class Assignment4 extends JFrame
       g.setColor(skyColor);             // set sky Color
       g.fillRect(0, 0, 1000, 350);      // create sky
       
-      g.setColor(green);                // set grass color
+      g.setColor(grassColor);                // set grass color
       g.fillRect(0, 350, 1000, 150);    // create grass
       
       g.setColor(mountainColor1);        // color purple mountain
@@ -58,7 +62,7 @@ public class Assignment4 extends JFrame
       int npoints1 = 3;
       g.fillPolygon(x1, y1, npoints1);  // create right mountain
       
-      g.setColor(yellow);               // create sun
+      g.setColor(sunColor);               // create sun
       g.fillOval(750, 100, 100, 100);
       
       
@@ -66,7 +70,7 @@ public class Assignment4 extends JFrame
     
     private class MyMouseListener implements MouseListener
     {
-        public void mouseClicked(MouseEvent e) //when mouse is clicked color of mountains is flipped 
+        public void mouseClicked(MouseEvent e)
         {
            mountainColor1 = new Color(0, 0, 0);
            mountainColor2 = new Color (0x95, 0x2e, 0x8f);
@@ -86,10 +90,18 @@ public class Assignment4 extends JFrame
 
         public void mouseEntered(MouseEvent e)
         {
+            sunColor = new Color(255, 255, 255);
+            skyColor =  new Color(0x00, 0x03, 0x5b);  //  dark blue
+            grassColor = new Color(0x03, 0x35, 0x00);  //  dark green
+            repaint();
         }
 
         public void mouseExited(MouseEvent e)
         {
+            sunColor = new Color(0xff, 0xff, 0x14);
+            skyColor = new Color(0, 255, 255);
+            grassColor = new Color(0, 255, 0);
+            repaint();
         }
         
         
@@ -102,3 +114,4 @@ public class Assignment4 extends JFrame
     }
     
 }
+
