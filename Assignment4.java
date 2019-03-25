@@ -10,8 +10,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
-
-public class Assignment4 extends JFrame
+public class Assignment4 extends JFrame implements ActionListener
 {
     private int mouseX = 0;
     private int mouseY = 0;
@@ -23,6 +22,19 @@ public class Assignment4 extends JFrame
     private Color mountainColor2 = new Color(0, 0, 0); // black
     private Color sunColor = new Color(0xff, 0xff, 0x14);  // yellow
     
+    private int delay = 40;
+    private Timer timer;
+    
+    // parallax values
+    private int mountainParallax1 = 50;
+    private int mountainParallax2 = 50;
+    
+    private int moonParallax = 5;
+    
+    private int grassParallax = 50;
+    
+    
+    
     Assignment4()
     {
         setTitle("Motion Parallax");
@@ -33,6 +45,10 @@ public class Assignment4 extends JFrame
         //Add the Mouse and MouseMotion Listeners
         addMouseListener(new MyMouseListener());
         addMouseMotionListener(new MyMouseMotionListener());
+        
+        // starts the timer
+        timer = new Timer(delay, this);
+        timer.start();
 
         setVisible(true);
     }
@@ -44,9 +60,6 @@ public class Assignment4 extends JFrame
       
       g.setColor(skyColor);             // set sky Color
       g.fillRect(0, 0, 1000, 350);      // create sky
-      
-      g.setColor(grassColor);                // set grass color
-      g.fillRect(0, 350, 1000, 150);    // create grass
       
       g.setColor(mountainColor1);        // color purple mountain
       int x[] = {200, 25, 375};         
@@ -63,8 +76,33 @@ public class Assignment4 extends JFrame
       g.setColor(sunColor);               // create sun
       g.fillOval(750, 100, 100, 100);
       
+      // calculates the parallax values for all the mountains
+      for (int i = 0; i < 3; i++) 
+      {
+          x[i] += mouseX / mountainParallax1;
+          y[i] += mouseY/ mountainParallax1;
+          x1[i] += mouseX / mountainParallax2;
+          y1[i] += mouseY / mountainParallax2;
+      }
+      
+      // draw new mountains
+      g.setColor(mountainColor1);        // color purple mountain
+      g.fillPolygon(x, y, npoints);     // create left mountain
+      
+      g.setColor(mountainColor2);        // color purple mountain
+      g.fillPolygon(x1, y1, npoints);     // create left mountain
+      
+      g.setColor(grassColor);           // set grass color
+      g.fillRect(0, 350, 1000, 150);    // create grass
+      
       
     }
+    
+    public void actionPerformed(ActionEvent e) 
+    {
+      // runs when timer activates
+      repaint();
+   }
     
     private class MyMouseListener implements MouseListener
     {
@@ -115,15 +153,19 @@ public class Assignment4 extends JFrame
         
     }
     
-    private class MyMouseMotionListener implements MouseMotionListener
+    private class MyMouseMotionListener implements MouseMotionListener 
     {
-       public void mouseDragged(MouseEvent e)
-       {
-       }
+        public void mouseDragged(MouseEvent e) 
+        {
+           
+        }
 
-       public void mouseMoved(MouseEvent e)
-       {
-       }
+        public void mouseMoved(MouseEvent e) 
+        {
+           // parallax movement happens when the mouse is moved
+           mouseX = e.getX() + 500;
+           mouseY = e.getY() + 125;
+        }
     }
     
     public static void main(String[] args) 
@@ -133,6 +175,3 @@ public class Assignment4 extends JFrame
     }
     
 }
-
-
-
