@@ -66,7 +66,7 @@ public class Assignment4 extends JFrame
     
     private class MyMouseListener implements MouseListener
     {
-        public void mouseClicked(MouseEvent e)
+        public void mouseClicked(MouseEvent e) //when mouse is clicked color of mountains is flipped 
         {
            mountainColor1 = new Color(0, 0, 0);
            mountainColor2 = new Color (0x95, 0x2e, 0x8f);
