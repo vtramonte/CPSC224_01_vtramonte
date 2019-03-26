@@ -4,7 +4,7 @@ Due Date: 3/25/2019
 Names: Vincent Tramonte, Vincent Rettke
 ********************/
 
-package Assignment4;
+package motionParallax; 
 //package motionparallaxmain;
 
 import javax.swing.*;
@@ -34,6 +34,8 @@ public class Assignment4 extends JFrame implements ActionListener
     private int mountainParallax2 = 30;
     
     private int moonParallax = 450;
+    
+    private int time; 
     
     
     
@@ -112,12 +114,18 @@ public class Assignment4 extends JFrame implements ActionListener
       g.setColor(grassColor);           // set grass color
       g.fillRect(0, 350, 1000, 150);    // create grass
       
+      //changes the color of the sun/moon depending on timer
+      if(time == 150) {
+    	  sunColor = new Color(255,0,0); 
+      }
+      
       
     }
     
     public void actionPerformed(ActionEvent e) 
     {
       // runs when timer activates
+      time++; 	
       repaint();
    }
     
