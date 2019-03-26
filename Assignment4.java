@@ -122,7 +122,14 @@ public class Assignment4 extends JFrame implements ActionListener
       if(time == 200) {
     	  mountainColor1 = new Color(255, 20, 147); 
       }
-      
+      //changes color of mountain 2 to grey based on timer
+      if(time == 200) {
+    	  mountainColor2 = new Color(47, 79, 79); 
+      }
+      //changes color of grass to olive based on timer  
+      if(time == 250) {
+    	  grassColor = new Color(128, 128, 0);
+      }
       
     }
     
