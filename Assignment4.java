@@ -114,9 +114,13 @@ public class Assignment4 extends JFrame implements ActionListener
       g.setColor(grassColor);           // set grass color
       g.fillRect(0, 350, 1000, 150);    // create grass
       
-      //changes the color of the sun/moon depending on timer
+      //changes the color of the sun/moon to red depending on timer
       if(time == 150) {
     	  sunColor = new Color(255,0,0); 
+      }
+      //changes color of mountain 1 to pink based on timer
+      if(time == 200) {
+    	  mountainColor1 = new Color(255, 20, 147); 
       }
       
       
