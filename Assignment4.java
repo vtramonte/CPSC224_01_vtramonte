@@ -57,24 +57,25 @@ public class Assignment4 extends JFrame implements ActionListener
     }
     
     public void paint(Graphics g)
+    //public void paintComponent(Graphics g)
     {
       // Call the superclass's paint method.
-      super.paint(g);
-      
+      //super.paint(g);
+ /*     
       g.setColor(skyColor);             // set sky Color
       g.fillRect(0, 0, 1000, 350);      // create sky
       
-      g.setColor(mountainColor1);        // color purple mountain
+      //g.setColor(mountainColor1);        // color purple mountain
       int x[] = {200, 25, 375};         
       int y[] = {75, 350, 350};
-      int npoints = 3;
-      g.fillPolygon(x, y, npoints);     // create left mountain
+      //int npoints = 3;
+      //g.fillPolygon(x, y, npoints);     // create left mountain
       
-      g.setColor(mountainColor2);                // color black mountain
+      //g.setColor(mountainColor2);                // color black mountain
       int x1[] = {375, 225, 525};         
       int y1[] = {125, 350, 350};
-      int npoints1 = 3;
-      g.fillPolygon(x1, y1, npoints1);  // create right mountain
+      //int npoints1 = 3;
+      //g.fillPolygon(x1, y1, npoints1);  // create right mountain
       
       g.setColor(sunColor);               // create sun
       g.fillOval(750, 100, 100, 100);
@@ -83,7 +84,13 @@ public class Assignment4 extends JFrame implements ActionListener
       g.setColor(Color.BLACK);
       g.drawLine(birdX, 70, birdX2, 80);
       g.drawLine(birdX + 15,80, birdX2 + 15, 70);
+     */ 
+      int x[] = {200, 25, 375};         
+      int y[] = {75, 350, 350}; 
       
+      int x1[] = {375, 225, 525};         
+      int y1[] = {125, 350, 350};
+
       // calculates the parallax values for all the mountains
       for (int i = 0; i < 3; i++) 
       {
@@ -93,12 +100,15 @@ public class Assignment4 extends JFrame implements ActionListener
           y1[i] += mouseY / mountainParallax2;
       }
       
+      g.setColor(skyColor);             // set sky Color
+      g.fillRect(0, 0, 1000, 350);      // create sky      
+      
       // draw new mountains
       g.setColor(mountainColor1);        // color purple mountain
-      g.fillPolygon(x, y, npoints);     // create left mountain
+      g.fillPolygon(x, y, 3);     // create left mountain
       
       g.setColor(mountainColor2);        // color purple mountain
-      g.fillPolygon(x1, y1, npoints);     // create left mountain
+      g.fillPolygon(x1, y1, 3);     // create left mountain
       
       // draw new moon
       g.setColor(sunColor);               // create sun
