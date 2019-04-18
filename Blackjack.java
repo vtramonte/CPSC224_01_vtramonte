@@ -7,6 +7,7 @@
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.util.Random;
 
 package blackjack;
 
@@ -16,12 +17,27 @@ package blackjack;
  */
 public class Blackjack extends JFrame
 {
+    // player and dealer cards
+    private int pCard1;
+    private int pCard2;
+    private int dCard1;
+    private int dCard2;
+    
     private JPanel dealerPanel;
     private JPanel youPanel;
     
     private JLabel dealerLabel;
     private JLabel youLabel;
+    private JLabel pc1Label;
+    private JLabel pc2Label;
+    private JLabel dc1Label;
+    private JLabel dc2Label;
+    
+    
+    
+    
 
+    // constructor
     Blackjack()
     {
         setTitle("Motion Parallax");
@@ -31,6 +47,9 @@ public class Blackjack extends JFrame
         
         buildDealerPanel();
         buildPlayerPanel();
+        
+        dealCards();
+        
         
         
         
@@ -45,6 +64,68 @@ public class Blackjack extends JFrame
         
     }
     
+    public void dealCards()
+    {
+        Random rand = new Random();
+        pCard1 = rand.nextInt(13)+1;
+        dCard1 = rand.nextInt(13)+1;
+        pCard2 = rand.nextInt(13)+1;
+        dCard2 = rand.nextInt(13)+1;
+        
+        // create player's first card label
+        if (pCard1 == 11)
+            pc1Label.setText("J");
+        else if (pCard1 == 12)
+            pc1Label.setText("Q");
+        else if (pCard1 == 13)
+            pc1Label.setText("K");
+        else if (pCard1 == 1)
+            pc1Label.setText("A");
+        else
+            pc1Label.setText("" + pCard1);
+        
+        // create dealer's first card label
+        if (dCard1 == 11)
+            dc1Label.setText("J");
+        else if (dCard1 == 12)
+            dc1Label.setText("Q");
+        else if (dCard1 == 13)
+            dc1Label.setText("K");
+        else if (dCard1 == 1)
+            dc1Label.setText("A");
+        else
+            dc1Label.setText("" + pCard1);
+        
+        // create player's second card label
+        if (pCard2 == 11)
+            pc2Label.setText("J");
+        else if (pCard2 == 12)
+            pc2Label.setText("Q");
+        else if (pCard2 == 13)
+            pc2Label.setText("K");
+        else if (pCard2 == 1)
+            pc2Label.setText("A");
+        else
+            pc2Label.setText("" + pCard1);
+        
+        // create dealer's second card label
+        if (dCard2 == 11)
+            dc2Label.setText("J");
+        else if (dCard2 == 12)
+            dc2Label.setText("Q");
+        else if (dCard2 == 13)
+            dc2Label.setText("K");
+        else if (dCard2 == 1)
+            dc2Label.setText("A");
+        else
+            dc2Label.setText("" + pCard1);
+        
+            
+
+    }
+    
+//*** PANEL CREATION ***********************************************************
+    
     private void buildDealerPanel()
     {
         // create new panel
@@ -52,9 +133,14 @@ public class Blackjack extends JFrame
         
         // labels
         dealerLabel = new JLabel("Dealer: ");
+        dc1Label = new JLabel(" 0");
+        dc2Label = new JLabel(" 0");
+        
         
         // add labels to panel
         dealerPanel.add(dealerLabel);
+        dealerPanel.add(dc1Label);
+        dealerPanel.add(dc2Label);
         
         // add panel to frame
 	add(dealerPanel, BorderLayout.NORTH);	
@@ -67,14 +153,19 @@ public class Blackjack extends JFrame
         
         // labels
         youLabel = new JLabel("You: ");
+        pc1Label = new JLabel(" 0");
+        pc2Label = new JLabel(" 0");
         
         // add labels to panel
         youPanel.add(youLabel);
+        youPanel.add(pc1Label);
+        youPanel.add(pc2Label);
         
         // add panel to frame
 	add(youPanel, BorderLayout.SOUTH);	
     }
     
+//** PAINTING *****************************************************************
     public void paint(Graphics g)
     {
         super.paint(g);
@@ -82,10 +173,12 @@ public class Blackjack extends JFrame
         g.drawLine(0, 375, 1000, 375);      // draw split screen
         
     }
-    
+ 
+//** MAIN *********************************************************************
     public static void main(String[] args) 
     {
         new Blackjack();
     }
     
 }
+
