@@ -22,6 +22,8 @@ public class Blackjack extends JFrame
     private int pCard2;
     private int dCard1;
     private int dCard2;
+    private int pTotal;
+    private int dTotal;
     
     private JPanel dealerPanel;
     private JPanel youPanel;
@@ -94,7 +96,7 @@ public class Blackjack extends JFrame
         else if (dCard1 == 1)
             dc1Label.setText("A");
         else
-            dc1Label.setText("" + pCard1);
+            dc1Label.setText("" + dCard1);
         
         // create player's second card label
         if (pCard2 == 11)
@@ -106,7 +108,7 @@ public class Blackjack extends JFrame
         else if (pCard2 == 1)
             pc2Label.setText("A");
         else
-            pc2Label.setText("" + pCard1);
+            pc2Label.setText("" + pCard2);
         
         // create dealer's second card label
         if (dCard2 == 11)
@@ -118,10 +120,14 @@ public class Blackjack extends JFrame
         else if (dCard2 == 1)
             dc2Label.setText("A");
         else
-            dc2Label.setText("" + pCard1);
+            dc2Label.setText("" + dCard2);
         
-            
-
+    }
+    
+    public void calcTotals()
+    {
+        pTotal = pCard1 + pCard2;
+        dTotal = dCard1 + dCard2;
     }
     
 //*** PANEL CREATION ***********************************************************
