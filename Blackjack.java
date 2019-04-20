@@ -24,16 +24,28 @@ public class Blackjack extends JFrame
     private int dCard2;
     private int pTotal;
     private int dTotal;
+    private int drawnCard[];
+    private int drawCount = 0;
     
+    // panels
     private JPanel dealerPanel;
     private JPanel youPanel;
     
+    // labels
     private JLabel dealerLabel;
     private JLabel youLabel;
     private JLabel pc1Label;
     private JLabel pc2Label;
     private JLabel dc1Label;
     private JLabel dc2Label;
+    private JLabel[] playerDrawLabel;
+    
+    // buttons
+    private JButton hitButton;
+    private JButton stayButton;
+    private JButton doubleButton;
+    private JButton splitButton;
+    
     
     
     
@@ -49,6 +61,7 @@ public class Blackjack extends JFrame
         
         buildDealerPanel();
         buildPlayerPanel();
+        
         
         dealCards();
         
@@ -124,6 +137,29 @@ public class Blackjack extends JFrame
         
     }
     
+    public void drawPlayerCard()
+    {
+        Random rand = new Random();
+        drawnCard[drawCount] = rand.nextInt(13)+1;
+        
+         // create player's first card label
+        if (drawnCard[drawCount] == 11)
+            pc1Label.setText("J");
+        else if (drawnCard[drawCount] == 12)
+            pc1Label.setText("Q");
+        else if (drawnCard[drawCount] == 13)
+            pc1Label.setText("K");
+        else if (drawnCard[drawCount] == 1)
+            pc1Label.setText("A");
+        else
+            pc1Label.setText("" + pCard1);
+        
+        drawCount++;
+        
+        
+        
+    }
+    
     public void calcTotals()
     {
         pTotal = pCard1 + pCard2;
@@ -162,13 +198,54 @@ public class Blackjack extends JFrame
         pc1Label = new JLabel(" 0");
         pc2Label = new JLabel(" 0");
         
+        
         // add labels to panel
         youPanel.add(youLabel);
         youPanel.add(pc1Label);
         youPanel.add(pc2Label);
         
+                
         // add panel to frame
 	add(youPanel, BorderLayout.SOUTH);	
+    }
+    
+    private void buildButtonsPanel()
+    {
+        
+    }
+    
+//** Button Creation **********************************************************
+    private void buildButtons()
+    {
+        hitButton = new JButton("Hit");
+        stayButton = new JButton("Stay");
+        doubleButton = new JButton("Double");
+        splitButton = new JButton("Split");
+        
+        hitButton.addActionListener(new ButtonListener());
+        stayButton.addActionListener(new ButtonListener());
+        doubleButton.addActionListener(new ButtonListener());
+        splitButton.addActionListener(new ButtonListener());
+            
+    }
+    
+    private class ButtonListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+            String actionCommand = e.getActionCommand();
+            switch (actionCommand) 
+            {
+                    case "Hit":
+                        drawPlayerCard();
+                        
+                        
+                        
+            }
+                        
+
+
+        }
     }
     
 //** PAINTING *****************************************************************
