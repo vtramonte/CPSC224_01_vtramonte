@@ -38,7 +38,16 @@ public class Blackjack extends JFrame
     private JLabel pc2Label;
     private JLabel dc1Label;
     private JLabel dc2Label;
-    private JLabel[] playerDrawLabel;
+    private JLabel playerDrawLabel0;
+    private JLabel playerDrawLabel1;
+    private JLabel playerDrawLabel2;
+    private JLabel playerDrawLabel3;
+    private JLabel playerDrawLabel4;
+    private JLabel playerDrawLabel5;
+    private JLabel playerDrawLabel6;
+    private JLabel playerDrawLabel7;
+    private JLabel playerDrawLabel8; // worst case: 9 draws
+    
     
     // buttons
     private JButton hitButton;
@@ -61,6 +70,7 @@ public class Blackjack extends JFrame
         
         buildDealerPanel();
         buildPlayerPanel();
+        buildButtonsPanel();
         
         
         dealCards();
@@ -144,15 +154,15 @@ public class Blackjack extends JFrame
         
          // create player's first card label
         if (drawnCard[drawCount] == 11)
-            pc1Label.setText("J");
+            playerDrawLabel0.setText("J");
         else if (drawnCard[drawCount] == 12)
-            pc1Label.setText("Q");
+            playerDrawLabel0.setText("Q");
         else if (drawnCard[drawCount] == 13)
-            pc1Label.setText("K");
+            playerDrawLabel0.setText("K");
         else if (drawnCard[drawCount] == 1)
-            pc1Label.setText("A");
+            playerDrawLabel0.setText("A");
         else
-            pc1Label.setText("" + pCard1);
+            playerDrawLabel0.setText("" + pCard1);
         
         drawCount++;
         
@@ -197,12 +207,22 @@ public class Blackjack extends JFrame
         youLabel = new JLabel("You: ");
         pc1Label = new JLabel(" 0");
         pc2Label = new JLabel(" 0");
-        
+        playerDrawLabel0 = new JLabel();
         
         // add labels to panel
         youPanel.add(youLabel);
         youPanel.add(pc1Label);
         youPanel.add(pc2Label);
+        youPanel.add(playerDrawLabel0);
+        /*youPanel.add(playerDrawLabel1);
+        youPanel.add(playerDrawLabel2);
+        youPanel.add(playerDrawLabel3);
+        youPanel.add(playerDrawLabel4);
+        youPanel.add(playerDrawLabel5);
+        youPanel.add(playerDrawLabel6);
+        youPanel.add(playerDrawLabel7);
+        youPanel.add(playerDrawLabel8);*/
+        
         
                 
         // add panel to frame
@@ -211,7 +231,12 @@ public class Blackjack extends JFrame
     
     private void buildButtonsPanel()
     {
+        buildButtons();
         
+        youPanel.add(hitButton);
+        youPanel.add(stayButton);
+        youPanel.add(doubleButton);
+        youPanel.add(splitButton);
     }
     
 //** Button Creation **********************************************************
@@ -238,6 +263,7 @@ public class Blackjack extends JFrame
             {
                     case "Hit":
                         drawPlayerCard();
+                   
                         
                         
                         
@@ -264,4 +290,3 @@ public class Blackjack extends JFrame
     }
     
 }
-
