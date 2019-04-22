@@ -30,6 +30,7 @@ public class Blackjack extends JFrame
     // panels
     private JPanel dealerPanel;
     private JPanel youPanel;
+    private JPanel playerButtonPanel;
     
     // labels
     private JLabel dealerLabel;
@@ -63,7 +64,7 @@ public class Blackjack extends JFrame
     // constructor
     Blackjack()
     {
-        setTitle("Motion Parallax");
+        setTitle("Blackjack Attack!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1000,750);
         setResizable(false);
@@ -72,6 +73,11 @@ public class Blackjack extends JFrame
         buildPlayerPanel();
         buildButtonsPanel();
         
+        // add panel to frame
+	add(dealerPanel, BorderLayout.CENTER);
+        add(playerButtonPanel, BorderLayout.EAST);
+	add(youPanel, BorderLayout.SOUTH);	
+	
         
         dealCards();
         
@@ -147,7 +153,7 @@ public class Blackjack extends JFrame
         
     }
     
-    public void drawPlayerCard()
+    public void drawPlayerCard()        // hit
     {
         Random rand = new Random();
         drawnCard[drawCount] = rand.nextInt(13)+1;
@@ -170,10 +176,32 @@ public class Blackjack extends JFrame
         
     }
     
+    public void drawDealerCard()        // hit
+    {
+        
+    }
+    
+    public void dealersTurn()
+    {
+        calcTotals();
+        if (pTotal == 21)
+            System.out.println("Dealer Wins");
+            
+        else if (pTotal >= 17)
+            compareHands();
+        else
+            drawDealerCard();
+    }
+    
     public void calcTotals()
     {
         pTotal = pCard1 + pCard2;
         dTotal = dCard1 + dCard2;
+    }
+    
+    public void compareHands()
+    {
+        
     }
     
 //*** PANEL CREATION ***********************************************************
@@ -194,8 +222,7 @@ public class Blackjack extends JFrame
         dealerPanel.add(dc1Label);
         dealerPanel.add(dc2Label);
         
-        // add panel to frame
-	add(dealerPanel, BorderLayout.NORTH);	
+        	
     }
     
     private void buildPlayerPanel()
@@ -225,18 +252,23 @@ public class Blackjack extends JFrame
         
         
                 
-        // add panel to frame
-	add(youPanel, BorderLayout.SOUTH);	
+        
     }
     
     private void buildButtonsPanel()
     {
+        // create new panel
+        playerButtonPanel = new JPanel();
+        playerButtonPanel.setLayout(new BoxLayout(playerButtonPanel, BoxLayout.PAGE_AXIS));
+        
         buildButtons();
         
-        youPanel.add(hitButton);
-        youPanel.add(stayButton);
-        youPanel.add(doubleButton);
-        youPanel.add(splitButton);
+        playerButtonPanel.add(hitButton);
+        playerButtonPanel.add(stayButton);
+        playerButtonPanel.add(doubleButton);
+        playerButtonPanel.add(splitButton);
+        
+        	
     }
     
 //** Button Creation **********************************************************
@@ -262,7 +294,16 @@ public class Blackjack extends JFrame
             switch (actionCommand) 
             {
                     case "Hit":
-                        drawPlayerCard();
+                        System.out.println("Hit currently does not work");
+                        //drawPlayerCard();
+                        
+                    case "Stay":
+                        drawCount = 0;
+                        dealersTurn();
+                        
+                    case "Double":
+                        
+                    case "Split":
                    
                         
                         
@@ -290,3 +331,4 @@ public class Blackjack extends JFrame
     }
     
 }
+
