@@ -603,6 +603,7 @@ public class Blackjack extends JFrame
             {
                     case "Hit":
                         drawPlayerCard();
+                        break;
                         
                         
                     case "Stay":
@@ -642,4 +643,3 @@ public class Blackjack extends JFrame
     }
     
 }
-
