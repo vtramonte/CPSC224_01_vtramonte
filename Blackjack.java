@@ -29,6 +29,8 @@ public class Blackjack extends JFrame
     private int dDrawnCards = 0;
     private int pDrawnCards = 0;
     private int drawCount = 0;
+    private boolean playerWins = false;
+    private boolean dealerWins = false;
     
     // panels
     private JPanel dealerPanel;
@@ -306,8 +308,13 @@ public class Blackjack extends JFrame
         }
        
         pDrawnCards = pDrawnCards + drawnCard;
-        if (pDrawnCards > 21)
-            System.out.println("Player busts. Dealer wins.");
+        calcTotals();
+        if (pTotal > 21)
+        {
+            dealerWins = true;
+            System.out.println("Dealer wins. Player busted.");
+            compareHands();
+        }
         drawCount++;
         
         
@@ -464,6 +471,8 @@ public class Blackjack extends JFrame
         {
             drawDealerCard();
             calcTotals();
+            if (dTotal > 21)
+                playerWins = true;
         }
         
         if (dTotal == 21)
@@ -482,7 +491,18 @@ public class Blackjack extends JFrame
     
     public void compareHands()
     {
-        
+        if (dealerWins)
+        {
+            // player busted. This is already accounted for
+        }
+        else if (playerWins)
+            System.out.println("Player wins. Dealer busted");
+        else if (pTotal > dTotal)
+            System.out.println("Player wins. Dealer pays player.");
+        else if (dTotal > pTotal)
+            System.out.println("Dealer wins. Dealer takes bet.");
+        else
+            System.out.println("Push.");
     }
     
 //*** PANEL CREATION ***********************************************************
