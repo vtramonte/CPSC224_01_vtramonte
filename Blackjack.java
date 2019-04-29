@@ -165,6 +165,19 @@ public class Blackjack extends JFrame
         else
             dc2Label.setText("" + dCard2);
         
+        if (pCard1 != 1 && pCard1 > 10)
+            pCard1 = 10;
+        
+        if (pCard2 != 1 && pCard2 > 10)
+            pCard2 = 10;
+        
+        if (dCard1 != 1 && dCard1 > 10)
+            dCard1 = 10;
+        
+        if (dCard2 != 1 && dCard2 > 10)
+            dCard2 = 10;
+        
+        
     }
     
     public void drawPlayerCard()        // hit
@@ -307,6 +320,9 @@ public class Blackjack extends JFrame
                 playerDrawLabel8.setText("" + drawnCard);
         }
        
+        if (drawnCard != 1 && drawnCard > 10)
+            drawnCard = 10;
+        
         pDrawnCards = pDrawnCards + drawnCard;
         calcTotals();
         if (pTotal > 21)
@@ -460,6 +476,9 @@ public class Blackjack extends JFrame
                 dealerDrawLabel8.setText("" + drawnCard);
         }
        
+        if (drawnCard != 1 && drawnCard > 10)
+            drawnCard = 10;
+        
         dDrawnCards = dDrawnCards + drawnCard;
         drawCount++;
     }
@@ -487,6 +506,7 @@ public class Blackjack extends JFrame
     {
         pTotal = pCard1 + pCard2 + pDrawnCards;
         dTotal = dCard1 + dCard2 + dDrawnCards;
+        System.out.println("ptotal: " + pTotal + " dTotal: " + dTotal);
     }
     
     public void compareHands()
@@ -624,8 +644,7 @@ public class Blackjack extends JFrame
                     case "Hit":
                         drawPlayerCard();
                         break;
-                        
-                        
+                                          
                     case "Stay":
                         drawCount = 0;
                         dealersTurn();
@@ -635,11 +654,7 @@ public class Blackjack extends JFrame
                         
                     case "Split":
                         
-                        
-                   
-                        
-                        
-                        
+                                     
             }
                         
 
@@ -663,3 +678,4 @@ public class Blackjack extends JFrame
     }
     
 }
+
