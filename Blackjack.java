@@ -73,7 +73,7 @@ public class Blackjack extends JFrame
     private JButton splitButton;
     
     // image icons
-    private ImageIcon three;
+    ImageIcon three = new ImageIcon("3C.png");
     
     
     
@@ -90,7 +90,7 @@ public class Blackjack extends JFrame
         setResizable(false);
         
         
-        buildPlayerCardPanel();
+        //buildPlayerCardPanel();
         buildDealerPanel();
         buildPlayerPanel();
         buildButtonsPanel();
@@ -99,12 +99,12 @@ public class Blackjack extends JFrame
 	add(dealerPanel, BorderLayout.NORTH);
         add(playerButtonPanel, BorderLayout.EAST);
 	add(youPanel, BorderLayout.SOUTH);	
-	add(playerCardsPanel, BorderLayout.CENTER);
+	//add(playerCardsPanel, BorderLayout.CENTER);
         
         
         dealCards();
         
-        pack();    
+        //pack();    
         
         // Display the window
         setVisible(true);
@@ -533,7 +533,7 @@ public class Blackjack extends JFrame
     {
         playerCardsPanel = new JPanel();
         
-        threeL = new JLabel();
+        /*threeL = new JLabel();
         three = new ImageIcon("3C.png");
         Image image3 = three.getImage(); // transform it 
         Image newimg3 = image3.getScaledInstance(200, 200,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
@@ -541,9 +541,9 @@ public class Blackjack extends JFrame
         
         threeL.setIcon(three);
 
-        playerCardsPanel.add(threeL);
+        playerCardsPanel.add(threeL);*/
         
-        pack();
+        //pack();
         
     }
     private void buildDealerPanel()
@@ -688,6 +688,7 @@ public class Blackjack extends JFrame
         super.paint(g);
         
         g.drawLine(0, 375, 1000, 375);      // draw split screen
+        three.paintIcon(this, g, 250, 400);
         
     }
  
@@ -698,4 +699,3 @@ public class Blackjack extends JFrame
     }
     
 }
-
