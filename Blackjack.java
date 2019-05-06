@@ -36,6 +36,7 @@ public class Blackjack extends JFrame
     private JPanel dealerPanel;
     private JPanel youPanel;
     private JPanel playerButtonPanel;
+    private JPanel playerCardsPanel;
     
     // labels
     private JLabel dealerLabel;
@@ -62,6 +63,7 @@ public class Blackjack extends JFrame
     private JLabel dealerDrawLabel5;
     private JLabel dealerDrawLabel6;
     private JLabel dealerDrawLabel7; // worst case: 9 draws
+    private JLabel threeL;
     
     
     // buttons
@@ -69,6 +71,10 @@ public class Blackjack extends JFrame
     private JButton stayButton;
     private JButton doubleButton;
     private JButton splitButton;
+    
+    // image icons
+    private ImageIcon three;
+    
     
     
     
@@ -83,25 +89,22 @@ public class Blackjack extends JFrame
         setSize(1000,750);
         setResizable(false);
         
+        
+        buildPlayerCardPanel();
         buildDealerPanel();
         buildPlayerPanel();
         buildButtonsPanel();
         
         // add panel to frame
-	add(dealerPanel, BorderLayout.CENTER);
+	add(dealerPanel, BorderLayout.NORTH);
         add(playerButtonPanel, BorderLayout.EAST);
 	add(youPanel, BorderLayout.SOUTH);	
-	
+	add(playerCardsPanel, BorderLayout.CENTER);
+        
         
         dealCards();
         
-        
-        
-        
-        
-        
-        
-        
+        pack();    
         
         // Display the window
         setVisible(true);
@@ -516,17 +519,33 @@ public class Blackjack extends JFrame
             // player busted. This is already accounted for
         }
         else if (playerWins)
-            System.out.println("Player wins. Dealer busted");
+            JOptionPane.showMessageDialog(null, "Player wins. Dealer busted");
         else if (pTotal > dTotal)
-            System.out.println("Player wins. Dealer pays player.");
+            JOptionPane.showMessageDialog(null, "Player wins. Dealer pays player.");
         else if (dTotal > pTotal)
-            System.out.println("Dealer wins. Dealer takes bet.");
+            JOptionPane.showMessageDialog(null, "Dealer wins. Dealer takes bet.");
         else
-            System.out.println("Push.");
+            JOptionPane.showMessageDialog(null, "Push.");
     }
     
 //*** PANEL CREATION ***********************************************************
-    
+    private void buildPlayerCardPanel()
+    {
+        playerCardsPanel = new JPanel();
+        
+        threeL = new JLabel();
+        three = new ImageIcon("3C.png");
+        Image image3 = three.getImage(); // transform it 
+        Image newimg3 = image3.getScaledInstance(200, 200,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        three = new ImageIcon(newimg3);  // transform it back
+        
+        threeL.setIcon(three);
+
+        playerCardsPanel.add(threeL);
+        
+        pack();
+        
+    }
     private void buildDealerPanel()
     {
         // create new panel
@@ -585,7 +604,7 @@ public class Blackjack extends JFrame
         playerDrawLabel0 = new JLabel();
         
         // add labels to panel
-        youPanel.add(youLabel);
+        youPanel.add(youLabel, BorderLayout.SOUTH);
         youPanel.add(pc1Label);
         youPanel.add(pc2Label);
         youPanel.add(playerDrawLabel0);
@@ -598,13 +617,14 @@ public class Blackjack extends JFrame
         youPanel.add(playerDrawLabel7);
         youPanel.add(playerDrawLabel8);
         
+        //youPanel.add(playerCardsPanel);
         
-                
-        
+              
     }
     
     private void buildButtonsPanel()
     {
+        
         // create new panel
         playerButtonPanel = new JPanel();
         playerButtonPanel.setLayout(new BoxLayout(playerButtonPanel, BoxLayout.PAGE_AXIS));
