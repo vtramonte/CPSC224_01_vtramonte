@@ -18,31 +18,19 @@ public class Blackjack extends JFrame
     private int dCard2;
     private int pTotal;
     private int dTotal;
-    private int pDrawnCard[];
-    private int dDrawnCard[];
+    //private int pDrawnCard[];
+    //private int dDrawnCard[];
     private int dDrawnCards = 0;
     private int pDrawnCards = 0;
     private int drawCount = 0;
-    private int paintCard = 0;
+
+    int [] playerPaintCard = new int[11];
+    int [] dealerPaintCard = new int[11]; 
     private int pCardLoc = 275;
+    private int dCardLoc = 275;
     private boolean playerWins = false;
     private boolean dealerWins = false;
-    private boolean playAgain = true;
-   
-    private boolean keepCardDrawn3 = false; // flag for keeping card drawn
-    private boolean keepCardDrawnA = false;
-    private boolean keepCardDrawn1 = false;
-    private boolean keepCardDrawn2 = false;
-    private boolean keepCardDrawn4 = false;
-    private boolean keepCardDrawn5 = false;
-    private boolean keepCardDrawn6 = false;
-    private boolean keepCardDrawn7 = false;
-    private boolean keepCardDrawn8 = false;
-    private boolean keepCardDrawn9 = false;
-    private boolean keepCardDrawn10 = false;
-    private boolean keepCardDrawnJ = false;
-    private boolean keepCardDrawnQ = false;
-    private boolean keepCardDrawnK = false;
+    private static boolean playAgain = true;
     
     // panels
     private JPanel dealerPanel;
@@ -85,7 +73,7 @@ public class Blackjack extends JFrame
     private JButton splitButton;
     
     // image icons
-    ImageIcon ace = new ImageIcon("AC.png");
+    ImageIcon ace = new ImageIcon("AS.png");
     ImageIcon two = new ImageIcon("2H.png");
     ImageIcon three = new ImageIcon("3C2.png");
     ImageIcon four = new ImageIcon("4H.png");
@@ -98,12 +86,8 @@ public class Blackjack extends JFrame
     ImageIcon jack = new ImageIcon("JC.png");
     ImageIcon queen = new ImageIcon("QH.png");
     ImageIcon king = new ImageIcon("KD.png");
-    
-    
-    
-    
-    
-    
+    ImageIcon deck = new ImageIcon("blue_back.png");
+
     
 
     // constructor
@@ -121,20 +105,20 @@ public class Blackjack extends JFrame
         buildButtonsPanel();
         
         // add panel to frame
-	add(dealerPanel, BorderLayout.NORTH);
+	    add(dealerPanel, BorderLayout.NORTH);
         add(playerButtonPanel, BorderLayout.EAST);
-	add(youPanel, BorderLayout.SOUTH);	
-	//add(playerCardsPanel, BorderLayout.CENTER);
+	    add(youPanel, BorderLayout.SOUTH);	
+	    //add(playerCardsPanel, BorderLayout.CENTER);
 	
-	//make the panels green
+	    //make the panels green
         dealerPanel.setBackground(new Color(0, 122, 0));
         youPanel.setBackground(new Color(0, 122, 0));
         playerButtonPanel.setBackground(new Color(0, 122, 0));
+        getContentPane().setBackground(new Color(0, 122, 0));
       
         dealCards();
         
             
-        
         //pack();    
         
         // Display the window
@@ -147,12 +131,16 @@ public class Blackjack extends JFrame
     {
         Random rand = new Random();
         pCard1 = rand.nextInt(13)+1;
-        paintCard = pCard1;     // paint the card
-        dCard1 = rand.nextInt(13)+1;
-        pCard2 = rand.nextInt(13)+1;
-        paintCard = pCard2;
-        dCard2 = rand.nextInt(13)+1;
+        playerPaintCard[0] = pCard1;
         
+        dCard1 = rand.nextInt(13)+1;
+        dealerPaintCard[0] = dCard1;
+        
+        pCard2 = rand.nextInt(13)+1;
+        playerPaintCard[1] = pCard2;
+        
+        dCard2 = rand.nextInt(13)+1;
+        dealerPaintCard[1] = dCard2;
         
         // create player's first card label
         if (pCard1 == 11)
@@ -221,13 +209,14 @@ public class Blackjack extends JFrame
     {
         Random rand = new Random();
         int drawnCard = rand.nextInt(13)+1;
-        paintCard = drawnCard;  // for painting the drawn player card
+        //paintCard = drawnCard;  // for painting the drawn player card
         
-        repaint();
+        //repaint();
         
         // create player's first card label
         if (drawCount == 0)
         {
+        	playerPaintCard[2] = drawnCard;        	
             if (drawnCard == 11)
                 playerDrawLabel0.setText("J");
             else if (drawnCard == 12)
@@ -243,6 +232,7 @@ public class Blackjack extends JFrame
         // create player's second card label
         if (drawCount == 1)
         {
+        	playerPaintCard[3] = drawnCard;        	
             if (drawnCard == 11)
                 playerDrawLabel1.setText("J");
             else if (drawnCard == 12)
@@ -258,6 +248,7 @@ public class Blackjack extends JFrame
         // create player's third card label
         if (drawCount == 2)
         {
+        	playerPaintCard[4] = drawnCard;
             if (drawnCard == 11)
                 playerDrawLabel2.setText("J");
             else if (drawnCard == 12)
@@ -273,6 +264,7 @@ public class Blackjack extends JFrame
         // create player's fourth card label
         if (drawCount == 3)
         {
+        	playerPaintCard[5] = drawnCard;
             if (drawnCard == 11)
                 playerDrawLabel3.setText("J");
             else if (drawnCard == 12)
@@ -288,6 +280,7 @@ public class Blackjack extends JFrame
         // create player's fifth card label
         if (drawCount == 4)
         {
+        	playerPaintCard[6] = drawnCard;
              if (drawnCard == 11)
                 playerDrawLabel4.setText("J");
             else if (drawnCard == 12)
@@ -303,6 +296,7 @@ public class Blackjack extends JFrame
         // create player's sixth card label
         if (drawCount == 5)
         {
+        	playerPaintCard[7] = drawnCard;
              if (drawnCard == 11)
                 playerDrawLabel5.setText("J");
             else if (drawnCard == 12)
@@ -318,6 +312,7 @@ public class Blackjack extends JFrame
         // create player's seventh card label
         if (drawCount == 6)
         {
+        	playerPaintCard[8] = drawnCard;
              if (drawnCard == 11)
                 playerDrawLabel6.setText("J");
             else if (drawnCard == 12)
@@ -333,6 +328,7 @@ public class Blackjack extends JFrame
         // create player's eighth card label
         if (drawCount == 7)
         {
+        	playerPaintCard[9] = drawnCard;
              if (drawnCard == 11)
                 playerDrawLabel7.setText("J");
             else if (drawnCard == 12)
@@ -348,6 +344,7 @@ public class Blackjack extends JFrame
         // create player's ninth card label
         if (drawCount == 8)
         {
+        	playerPaintCard[10] = drawnCard;
              if (drawnCard == 11)
                 playerDrawLabel8.setText("J");
             else if (drawnCard == 12)
@@ -359,6 +356,8 @@ public class Blackjack extends JFrame
             else
                 playerDrawLabel8.setText("" + drawnCard);
         }
+        
+        repaint();
        
         if (drawnCard != 1 && drawnCard > 10)
             drawnCard = 10;
@@ -372,7 +371,7 @@ public class Blackjack extends JFrame
             compareHands();
         }
         drawCount++;
-        
+         
         
     }
     
@@ -381,9 +380,10 @@ public class Blackjack extends JFrame
         Random rand = new Random();
         int drawnCard = rand.nextInt(13)+1;
         
-        // create player's first card label
+        // create dealer's first card label
         if (drawCount == 0)
         {
+        	dealerPaintCard[2] = drawnCard;
             if (drawnCard == 11)
                 dealerDrawLabel0.setText("J");
             else if (drawnCard == 12)
@@ -396,9 +396,10 @@ public class Blackjack extends JFrame
                 dealerDrawLabel0.setText("" + drawnCard);
         }
         
-        // create player's second card label
+        // create dealer's second card label
         if (drawCount == 1)
         {
+        	dealerPaintCard[3] = drawnCard;
             if (drawnCard == 11)
                 dealerDrawLabel1.setText("J");
             else if (drawnCard == 12)
@@ -411,9 +412,10 @@ public class Blackjack extends JFrame
                 dealerDrawLabel1.setText("" + drawnCard);
         }
         
-        // create player's third card label
+        // create dealer's third card label
         if (drawCount == 2)
         {
+        	dealerPaintCard[4] = drawnCard;
             if (drawnCard == 11)
                 dealerDrawLabel2.setText("J");
             else if (drawnCard == 12)
@@ -426,9 +428,10 @@ public class Blackjack extends JFrame
                 dealerDrawLabel2.setText("" + drawnCard);
         }
         
-        // create player's fourth card label
+        // create dealer's fourth card label
         if (drawCount == 3)
         {
+        	dealerPaintCard[5] = drawnCard;
             if (drawnCard == 11)
                 dealerDrawLabel3.setText("J");
             else if (drawnCard == 12)
@@ -441,9 +444,10 @@ public class Blackjack extends JFrame
                 dealerDrawLabel3.setText("" + drawnCard);
         }
         
-        // create player's fifth card label
+        // create dealer's fifth card label
         if (drawCount == 4)
         {
+        	dealerPaintCard[6] = drawnCard;
             if (drawnCard == 11)
                 dealerDrawLabel4.setText("J");
             else if (drawnCard == 12)
@@ -456,9 +460,10 @@ public class Blackjack extends JFrame
                 dealerDrawLabel4.setText("" + drawnCard);
         }
         
-        // create player's sixth card label
+        // create dealer's sixth card label
         if (drawCount == 5)
         {
+        	dealerPaintCard[7] = drawnCard;
             if (drawnCard == 11)
                 dealerDrawLabel5.setText("J");
             else if (drawnCard == 12)
@@ -471,9 +476,10 @@ public class Blackjack extends JFrame
                 dealerDrawLabel5.setText("" + drawnCard);
         }
         
-        // create player's seventh card label
+        // create dealer's seventh card label
         if (drawCount == 6)
         {
+        	dealerPaintCard[8] = drawnCard;
             if (drawnCard == 11)
                 dealerDrawLabel6.setText("J");
             else if (drawnCard == 12)
@@ -486,9 +492,10 @@ public class Blackjack extends JFrame
                 dealerDrawLabel6.setText("" + drawnCard);
         }
         
-        // create player's eighth card label
+        // create dealer's eighth card label
         if (drawCount == 7)
         {
+        	dealerPaintCard[9] = drawnCard;
             if (drawnCard == 11)
                 dealerDrawLabel7.setText("J");
             else if (drawnCard == 12)
@@ -501,9 +508,10 @@ public class Blackjack extends JFrame
                 dealerDrawLabel7.setText("" + drawnCard);
         }
         
-        // create player's ninth card label
+        // create dealer's ninth card label
         if (drawCount == 8)
         {
+        	dealerPaintCard[10] = drawnCard;
             if (drawnCard == 11)
                 dealerDrawLabel8.setText("J");
             else if (drawnCard == 12)
@@ -515,6 +523,7 @@ public class Blackjack extends JFrame
             else
                 dealerDrawLabel8.setText("" + drawnCard);
         }
+        repaint();         
        
         if (drawnCard != 1 && drawnCard > 10)
             drawnCard = 10;
@@ -546,7 +555,7 @@ public class Blackjack extends JFrame
     {
         pTotal = pCard1 + pCard2 + pDrawnCards;
         dTotal = dCard1 + dCard2 + dDrawnCards;
-        JOptionPane.showMessageDialog(null,"ptotal: " + pTotal + " dTotal: " + dTotal);
+        System.out.println("ptotal: " + pTotal + " dTotal: " + dTotal);
     }
     
     public void compareHands()
@@ -568,18 +577,21 @@ public class Blackjack extends JFrame
 //*** PANEL CREATION ***********************************************************
     private void buildPlayerCardPanel()
     {
+    	/*
         playerCardsPanel = new JPanel();
         
-        /*threeL = new JLabel();
+        threeL = new JLabel();
         three = new ImageIcon("3C.png");
         Image image3 = three.getImage(); // transform it 
         Image newimg3 = image3.getScaledInstance(200, 200,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         three = new ImageIcon(newimg3);  // transform it back
         
         threeL.setIcon(three);
-        playerCardsPanel.add(threeL);*/
+        playerCardsPanel.add(threeL);
         
-        //pack();
+
+        pack();
+        */
         
     }
     private void buildDealerPanel()
@@ -622,7 +634,7 @@ public class Blackjack extends JFrame
     
     private void buildPlayerPanel()
     {
-        // create new panel
+        // create new panel 
         youPanel = new JPanel();
         
         // labels
@@ -654,6 +666,7 @@ public class Blackjack extends JFrame
         youPanel.add(playerDrawLabel8);
         
         //youPanel.add(playerCardsPanel);
+        
         
               
     }
@@ -727,150 +740,133 @@ public class Blackjack extends JFrame
         g.drawRect(0, 0, 1000, 750);
         g.setColor(Color.black);
         g.drawLine(0, 375, 1000, 375);      // draw split screen
+        pCardLoc = 275;
+        dCardLoc = 275; 
         
-        if (paintCard == 1 || keepCardDrawnA)
-        {
-            three.paintIcon(this, g, pCardLoc, 400);
-            if (keepCardDrawn3 == false)
-            {
-                pCardLoc += 25;
-                keepCardDrawn3 = true;
-            }
-            
-            
-        }
-        if (paintCard == 2 || keepCardDrawn2)
-        {
-            two.paintIcon(this, g, pCardLoc, 400);
-            if (keepCardDrawn2 == false)
-            {
-                pCardLoc += 25;
-                keepCardDrawn2 = true;
-            }
-        }
-        
-        if (paintCard == 3 || keepCardDrawn3)
-        {
-            three.paintIcon(this, g, pCardLoc, 400);
-            if (keepCardDrawn3 == false)
-            {
-                pCardLoc += 25;
-                keepCardDrawn3 = true;
-            }
-            
-            
-        }
-        if (paintCard == 4 || keepCardDrawn4)
-        {
-            four.paintIcon(this, g, pCardLoc, 400);
-            if (keepCardDrawn4 == false)
-            {
-                pCardLoc += 25;
-                keepCardDrawn4 = true;
-            }
-        }
+        //draw card face down to simulate the deck
+        //deck.paintIcon(this, g, 275, 50);
 
-        if (paintCard == 5 || keepCardDrawn5)
-        {
-            five.paintIcon(this, g, pCardLoc, 400);
-            if (keepCardDrawn5 == false)
-            {
-                pCardLoc += 25;
-                keepCardDrawn5 = true;
-            }
-            
-            
-        }
-        if (paintCard == 6 || keepCardDrawn6)
-        {
-            six.paintIcon(this, g, pCardLoc, 400);
-            if (keepCardDrawn6 == false)
-            {
-                pCardLoc += 25;
-                keepCardDrawn6 = true;
-            }
-        }
-
-        if (paintCard == 7 || keepCardDrawn7)
-        {
-            seven.paintIcon(this, g, pCardLoc, 400);
-            if (keepCardDrawn7 == false)
-            {
-                pCardLoc += 25;
-                keepCardDrawn7 = true;
-            }
-            
-            
-        }
-        if (paintCard == 8 || keepCardDrawn8)
-        {
-            eight.paintIcon(this, g, pCardLoc, 400);
-            if (keepCardDrawn8 == false)
-            {
-                pCardLoc += 25;
-                keepCardDrawn8 = true;
-            }
-        }
-
-        if (paintCard == 9 || keepCardDrawn9)
-        {
-            nine.paintIcon(this, g, pCardLoc, 400);
-            if (keepCardDrawn9 == false)
-            {
-                pCardLoc += 25;
-                keepCardDrawn9 = true;
-            }
-            
-            
-        }
-        if (paintCard == 10 || keepCardDrawn10)
-        {
-            ten.paintIcon(this, g, pCardLoc, 400);
-            if (keepCardDrawn10 == false)
-            {
-                pCardLoc += 25;
-                keepCardDrawn10 = true;
-            }
-        }
+        //loops through player card array and paints cards accordingly 
+        for(int i = 0; i < playerPaintCard.length; i++) {
+        	if(playerPaintCard[i] == 1) {
+            	ace.paintIcon(this, g, pCardLoc, 400);
+                pCardLoc += 25;      	
+        	}
+        	else if(playerPaintCard[i] == 2) {
+            	two.paintIcon(this, g, pCardLoc, 400);
+                pCardLoc += 25;      	
+        	}
+        	else if(playerPaintCard[i] == 3) {
+            	three.paintIcon(this, g, pCardLoc, 400);
+                pCardLoc += 25;      	
+        	}
+        	else if(playerPaintCard[i] == 4) {
+            	four.paintIcon(this, g, pCardLoc, 400);
+                pCardLoc += 25;      	
+        	}        	
+        	else if(playerPaintCard[i] == 5) {
+            	five.paintIcon(this, g, pCardLoc, 400);
+                pCardLoc += 25;      	
+        	}
+        	else if(playerPaintCard[i] == 6) {
+            	six.paintIcon(this, g, pCardLoc, 400);
+                pCardLoc += 25; 
+        	}  
+        	else if(playerPaintCard[i] == 7) {
+            	seven.paintIcon(this, g, pCardLoc, 400);
+                pCardLoc += 25;      	
+        	}
+        	else if(playerPaintCard[i] == 8) {
+            	eight.paintIcon(this, g, pCardLoc, 400);
+                pCardLoc += 25;      	
+        	}        	
+        	else if(playerPaintCard[i] == 9) {
+            	nine.paintIcon(this, g, pCardLoc, 400);
+                pCardLoc += 25;      	
+        	}        	
+        	else if(playerPaintCard[i] == 10) {
+            	ten.paintIcon(this, g, pCardLoc, 400);
+                pCardLoc += 25;      	
+        	}
+        	else if(playerPaintCard[i] == 11) {
+            	jack.paintIcon(this, g, pCardLoc, 400);
+                pCardLoc += 25;      	
+        	}        	
+        	else if(playerPaintCard[i] == 12) {
+            	queen.paintIcon(this, g, pCardLoc, 400);
+                pCardLoc += 25;      	
+        	}
+        	else if(playerPaintCard[i] == 13) {
+            	king.paintIcon(this, g, pCardLoc, 400);
+                pCardLoc += 25;      	
+        	}        	
+        } 
         
-        if (paintCard == 11 || keepCardDrawnJ)
-        {
-            jack.paintIcon(this, g, pCardLoc, 400);
-            if (keepCardDrawnJ == false)
-            {
-                pCardLoc += 25;
-                keepCardDrawnJ = true;
-            }
-            
-            
-        }
-        if (paintCard == 12 || keepCardDrawnQ)
-        {
-            queen.paintIcon(this, g, pCardLoc, 400);
-            if (keepCardDrawnQ == false)
-            {
-                pCardLoc += 25;
-                keepCardDrawnQ = true;
-            }
-        }
         
-        if (paintCard == 13 || keepCardDrawnK)
-        {
-            king.paintIcon(this, g, pCardLoc, 400);
-            if (keepCardDrawnK == false)
-            {
-                pCardLoc += 25;
-                keepCardDrawnK = true;
-            }
-        }
-        
+       
+        //loops through dealer card array and paints cards accordingly 
+        for(int i = 0; i < dealerPaintCard.length; i++) {
+        	if(dealerPaintCard[i] == 1) {
+            	ace.paintIcon(this, g, dCardLoc, 100);
+                dCardLoc += 25;      	
+        	}
+        	else if(dealerPaintCard[i] == 2) {
+            	two.paintIcon(this, g, dCardLoc, 100);
+                dCardLoc += 25;      	
+        	}
+        	else if(dealerPaintCard[i] == 3) {
+            	three.paintIcon(this, g, dCardLoc, 100);
+                dCardLoc += 25;      	
+        	}
+        	else if(dealerPaintCard[i] == 4) {
+            	four.paintIcon(this, g, dCardLoc, 100);
+                dCardLoc += 25;      	
+        	}        	
+        	else if(dealerPaintCard[i] == 5) {
+            	five.paintIcon(this, g, dCardLoc, 100);
+                dCardLoc += 25;      	
+        	}
+        	else if(dealerPaintCard[i] == 6) {
+            	six.paintIcon(this, g, dCardLoc, 100);
+                dCardLoc += 25; 
+        	}  
+        	else if(dealerPaintCard[i] == 7) {
+            	seven.paintIcon(this, g, dCardLoc, 100);
+                dCardLoc += 25;      	
+        	}
+        	else if(dealerPaintCard[i] == 8) {
+            	eight.paintIcon(this, g, dCardLoc, 100);
+                dCardLoc += 25;      	
+        	}        	
+        	else if(dealerPaintCard[i] == 9) {
+            	nine.paintIcon(this, g, dCardLoc, 100);
+                dCardLoc += 25;      	
+        	}        	
+        	else if(dealerPaintCard[i] == 10) {
+            	ten.paintIcon(this, g, dCardLoc, 100);
+                dCardLoc += 25;      	
+        	}
+        	else if(dealerPaintCard[i] == 11) {
+            	jack.paintIcon(this, g, dCardLoc, 100);
+                dCardLoc += 25;      	
+        	}        	
+        	else if(dealerPaintCard[i] == 12) {
+            	queen.paintIcon(this, g, dCardLoc, 100);
+                dCardLoc += 25;      	
+        	}
+        	else if(dealerPaintCard[i] == 13) {
+            	king.paintIcon(this, g, dCardLoc, 100);
+                dCardLoc += 25;      	
+        	}        	
+        }         
+       
     }
 
  
 //** MAIN *********************************************************************
     public static void main(String[] args) 
     {
-        new Blackjack();
+    	new Blackjack();
     }
     
 }
