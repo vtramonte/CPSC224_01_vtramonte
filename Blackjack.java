@@ -131,6 +131,11 @@ public class Blackjack extends JFrame
         add(playerButtonPanel, BorderLayout.EAST);
 	add(youPanel, BorderLayout.SOUTH);	
 	//add(playerCardsPanel, BorderLayout.CENTER);
+	
+	//make the panels green
+        dealerPanel.setBackground(new Color(0, 122, 0));
+        youPanel.setBackground(new Color(0, 122, 0));
+        playerButtonPanel.setBackground(new Color(0, 122, 0));
       
         dealCards();
         
