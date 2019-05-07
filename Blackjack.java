@@ -134,7 +134,9 @@ public class Blackjack extends JFrame
         playerPaintCard[0] = pCard1;
         
         dCard1 = rand.nextInt(13)+1;
-        dealerPaintCard[0] = dCard1;
+        //dealerPaintCard[0] = 0;
+        dealerPaintCard[0] = 15; 
+        		//dCard1;
         
         pCard2 = rand.nextInt(13)+1;
         playerPaintCard[1] = pCard2;
@@ -710,11 +712,12 @@ public class Blackjack extends JFrame
             String actionCommand = e.getActionCommand();
             switch (actionCommand) 
             {
-                    case "Hit":
+                    case "Hit":                    	 
                         drawPlayerCard();
                         break;
                                           
                     case "Stay":
+                    	dealerPaintCard[0] = dCard1;
                         drawCount = 0;
                         dealersTurn();
                         
@@ -806,10 +809,14 @@ public class Blackjack extends JFrame
        
         //loops through dealer card array and paints cards accordingly 
         for(int i = 0; i < dealerPaintCard.length; i++) {
-        	if(dealerPaintCard[i] == 1) {
-            	ace.paintIcon(this, g, dCardLoc, 100);
+        	if(dealerPaintCard[i] == 15) {
+            	deck.paintIcon(this, g, dCardLoc, 100);
                 dCardLoc += 25;      	
         	}
+        	else if(dealerPaintCard[i] == 1) {
+            	ace.paintIcon(this, g, dCardLoc, 100);
+                dCardLoc += 25;      	
+        	}        	
         	else if(dealerPaintCard[i] == 2) {
             	two.paintIcon(this, g, dCardLoc, 100);
                 dCardLoc += 25;      	
