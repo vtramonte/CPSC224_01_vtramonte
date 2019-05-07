@@ -26,8 +26,8 @@ public class Blackjack extends JFrame
 
     int [] playerPaintCard = new int[11];
     int [] dealerPaintCard = new int[11]; 
-    private int pCardLoc = 275;
-    private int dCardLoc = 275;
+    private int pCardLoc = 400;
+    private int dCardLoc = 550;
     private boolean playerWins = false;
     private boolean dealerWins = false;
     private static boolean playAgain = true;
@@ -86,7 +86,7 @@ public class Blackjack extends JFrame
     ImageIcon jack = new ImageIcon("JC.png");
     ImageIcon queen = new ImageIcon("QH.png");
     ImageIcon king = new ImageIcon("KD.png");
-    ImageIcon deck = new ImageIcon("blue_back.png");
+    ImageIcon deck = new ImageIcon("blue_back-1.png");
 
     
 
@@ -740,11 +740,11 @@ public class Blackjack extends JFrame
         g.drawRect(0, 0, 1000, 750);
         g.setColor(Color.black);
         g.drawLine(0, 375, 1000, 375);      // draw split screen
-        pCardLoc = 275;
-        dCardLoc = 275; 
+        pCardLoc = 400;
+        dCardLoc = 550; 
         
         //draw card face down to simulate the deck
-        //deck.paintIcon(this, g, 275, 50);
+        deck.paintIcon(this, g, 275, 100);
 
         //loops through player card array and paints cards accordingly 
         for(int i = 0; i < playerPaintCard.length; i++) {
