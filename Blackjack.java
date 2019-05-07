@@ -1,15 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.util.Random;
 
-package blackjack;
+//package blackjack;
 
 /**
  *
@@ -374,7 +368,7 @@ public class Blackjack extends JFrame
         if (pTotal > 21)
         {
             dealerWins = true;
-            System.out.println("Dealer wins. Player busted.");
+            JOptionPane.showMessageDialog(null,"Dealer wins. Player busted.");
             compareHands();
         }
         drawCount++;
@@ -541,7 +535,7 @@ public class Blackjack extends JFrame
         }
         
         if (dTotal == 21)
-            System.out.println("Dealer Wins");
+        	JOptionPane.showMessageDialog(null,"Dealer Wins");
             
         else 
             compareHands();
@@ -552,7 +546,7 @@ public class Blackjack extends JFrame
     {
         pTotal = pCard1 + pCard2 + pDrawnCards;
         dTotal = dCard1 + dCard2 + dDrawnCards;
-        System.out.println("ptotal: " + pTotal + " dTotal: " + dTotal);
+        JOptionPane.showMessageDialog(null,"ptotal: " + pTotal + " dTotal: " + dTotal);
     }
     
     public void compareHands()
@@ -583,7 +577,6 @@ public class Blackjack extends JFrame
         three = new ImageIcon(newimg3);  // transform it back
         
         threeL.setIcon(three);
-
         playerCardsPanel.add(threeL);*/
         
         //pack();
