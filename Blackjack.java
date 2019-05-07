@@ -92,18 +92,18 @@ public class Blackjack extends JFrame
     
     // image icons
     ImageIcon ace = new ImageIcon("AC.png");
-    ImageIcon two = new ImageIcon("2C.png");
+    ImageIcon two = new ImageIcon("2H.png");
     ImageIcon three = new ImageIcon("3C2.png");
     ImageIcon four = new ImageIcon("4H.png");
-    ImageIcon five = new ImageIcon("5C.png");
+    ImageIcon five = new ImageIcon("5D.png");
     ImageIcon six = new ImageIcon("6C.png");
-    ImageIcon seven = new ImageIcon("7C.png");
-    ImageIcon eight = new ImageIcon("8C.png");
+    ImageIcon seven = new ImageIcon("7D.png");
+    ImageIcon eight = new ImageIcon("8S.png");
     ImageIcon nine = new ImageIcon("9C.png");
-    ImageIcon ten = new ImageIcon("10C.png");
+    ImageIcon ten = new ImageIcon("10D.png");
     ImageIcon jack = new ImageIcon("JC.png");
-    ImageIcon queen = new ImageIcon("QC.png");
-    ImageIcon king = new ImageIcon("KC.png");
+    ImageIcon queen = new ImageIcon("QH.png");
+    ImageIcon king = new ImageIcon("KD.png");
     
     
     
@@ -730,6 +730,27 @@ public class Blackjack extends JFrame
         g.setColor(Color.black);
         g.drawLine(0, 375, 1000, 375);      // draw split screen
         
+        if (paintCard == 1 || keepCardDrawnA)
+        {
+            three.paintIcon(this, g, pCardLoc, 400);
+            if (keepCardDrawn3 == false)
+            {
+                pCardLoc += 25;
+                keepCardDrawn3 = true;
+            }
+            
+            
+        }
+        if (paintCard == 2 || keepCardDrawn2)
+        {
+            two.paintIcon(this, g, pCardLoc, 400);
+            if (keepCardDrawn2 == false)
+            {
+                pCardLoc += 25;
+                keepCardDrawn2 = true;
+            }
+        }
+        
         if (paintCard == 3 || keepCardDrawn3)
         {
             three.paintIcon(this, g, pCardLoc, 400);
@@ -750,8 +771,103 @@ public class Blackjack extends JFrame
                 keepCardDrawn4 = true;
             }
         }
+
+        if (paintCard == 5 || keepCardDrawn5)
+        {
+            five.paintIcon(this, g, pCardLoc, 400);
+            if (keepCardDrawn5 == false)
+            {
+                pCardLoc += 25;
+                keepCardDrawn5 = true;
+            }
+            
+            
+        }
+        if (paintCard == 6 || keepCardDrawn6)
+        {
+            six.paintIcon(this, g, pCardLoc, 400);
+            if (keepCardDrawn6 == false)
+            {
+                pCardLoc += 25;
+                keepCardDrawn6 = true;
+            }
+        }
+
+        if (paintCard == 7 || keepCardDrawn7)
+        {
+            seven.paintIcon(this, g, pCardLoc, 400);
+            if (keepCardDrawn7 == false)
+            {
+                pCardLoc += 25;
+                keepCardDrawn7 = true;
+            }
+            
+            
+        }
+        if (paintCard == 8 || keepCardDrawn8)
+        {
+            eight.paintIcon(this, g, pCardLoc, 400);
+            if (keepCardDrawn8 == false)
+            {
+                pCardLoc += 25;
+                keepCardDrawn8 = true;
+            }
+        }
+
+        if (paintCard == 9 || keepCardDrawn9)
+        {
+            nine.paintIcon(this, g, pCardLoc, 400);
+            if (keepCardDrawn9 == false)
+            {
+                pCardLoc += 25;
+                keepCardDrawn9 = true;
+            }
+            
+            
+        }
+        if (paintCard == 10 || keepCardDrawn10)
+        {
+            ten.paintIcon(this, g, pCardLoc, 400);
+            if (keepCardDrawn10 == false)
+            {
+                pCardLoc += 25;
+                keepCardDrawn10 = true;
+            }
+        }
+        
+        if (paintCard == 11 || keepCardDrawnJ)
+        {
+            jack.paintIcon(this, g, pCardLoc, 400);
+            if (keepCardDrawnJ == false)
+            {
+                pCardLoc += 25;
+                keepCardDrawnJ = true;
+            }
+            
+            
+        }
+        if (paintCard == 12 || keepCardDrawnQ)
+        {
+            queen.paintIcon(this, g, pCardLoc, 400);
+            if (keepCardDrawnQ == false)
+            {
+                pCardLoc += 25;
+                keepCardDrawnQ = true;
+            }
+        }
+        
+        if (paintCard == 13 || keepCardDrawnK)
+        {
+            king.paintIcon(this, g, pCardLoc, 400);
+            if (keepCardDrawnK == false)
+            {
+                pCardLoc += 25;
+                keepCardDrawnK = true;
+            }
+        }
         
     }
+
  
 //** MAIN *********************************************************************
     public static void main(String[] args) 
