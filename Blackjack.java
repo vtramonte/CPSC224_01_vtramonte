@@ -30,9 +30,11 @@ public class Blackjack extends JFrame
     private int pDrawnCards = 0;
     private int drawCount = 0;
     private int paintCard = 0;
+    private int pCardLoc = 275;
     private boolean playerWins = false;
     private boolean dealerWins = false;
     private boolean playAgain = true;
+   
     private boolean keepCardDrawn3 = false; // flag for keeping card drawn
     private boolean keepCardDrawnA = false;
     private boolean keepCardDrawn1 = false;
@@ -146,9 +148,12 @@ public class Blackjack extends JFrame
     {
         Random rand = new Random();
         pCard1 = rand.nextInt(13)+1;
+        paintCard = pCard1;     // paint the card
         dCard1 = rand.nextInt(13)+1;
         pCard2 = rand.nextInt(13)+1;
+        paintCard = pCard2;
         dCard2 = rand.nextInt(13)+1;
+        
         
         // create player's first card label
         if (pCard1 == 11)
@@ -727,13 +732,23 @@ public class Blackjack extends JFrame
         
         if (paintCard == 3 || keepCardDrawn3)
         {
-            three.paintIcon(this, g, 275, 400);
-            keepCardDrawn3 = true;
+            three.paintIcon(this, g, pCardLoc, 400);
+            if (keepCardDrawn3 == false)
+            {
+                pCardLoc += 25;
+                keepCardDrawn3 = true;
+            }
+            
+            
         }
         if (paintCard == 4 || keepCardDrawn4)
         {
-            four.paintIcon(this, g, 300, 400);
-            keepCardDrawn4 = true;
+            four.paintIcon(this, g, pCardLoc, 400);
+            if (keepCardDrawn4 == false)
+            {
+                pCardLoc += 25;
+                keepCardDrawn4 = true;
+            }
         }
         
     }
