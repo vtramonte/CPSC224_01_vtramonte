@@ -29,8 +29,10 @@ public class Blackjack extends JFrame
     private int dDrawnCards = 0;
     private int pDrawnCards = 0;
     private int drawCount = 0;
+    private int paintCard = 0;
     private boolean playerWins = false;
     private boolean dealerWins = false;
+    private boolean playAgain = true;
     
     // panels
     private JPanel dealerPanel;
@@ -73,7 +75,20 @@ public class Blackjack extends JFrame
     private JButton splitButton;
     
     // image icons
-    ImageIcon three = new ImageIcon("3C.png");
+    ImageIcon ace = new ImageIcon("AC.png");
+    ImageIcon two = new ImageIcon("2C.png");
+    ImageIcon three = new ImageIcon("3C2.png");
+    ImageIcon four = new ImageIcon("4C.png");
+    ImageIcon five = new ImageIcon("5C.png");
+    ImageIcon six = new ImageIcon("6C.png");
+    ImageIcon seven = new ImageIcon("7C.png");
+    ImageIcon eight = new ImageIcon("8C.png");
+    ImageIcon nine = new ImageIcon("9C.png");
+    ImageIcon ten = new ImageIcon("10C.png");
+    ImageIcon jack = new ImageIcon("JC.png");
+    ImageIcon queen = new ImageIcon("QC.png");
+    ImageIcon king = new ImageIcon("KC.png");
+    
     
     
     
@@ -100,9 +115,10 @@ public class Blackjack extends JFrame
         add(playerButtonPanel, BorderLayout.EAST);
 	add(youPanel, BorderLayout.SOUTH);	
 	//add(playerCardsPanel, BorderLayout.CENTER);
-        
-        
+      
         dealCards();
+        
+            
         
         //pack();    
         
@@ -187,6 +203,8 @@ public class Blackjack extends JFrame
     {
         Random rand = new Random();
         int drawnCard = rand.nextInt(13)+1;
+        paintCard = drawnCard;
+        
         
         // create player's first card label
         if (drawCount == 0)
@@ -687,8 +705,13 @@ public class Blackjack extends JFrame
     {
         super.paint(g);
         
+        g.setColor(Color.blue);
+        g.drawRect(0, 0, 1000, 750);
+        g.setColor(Color.black);
         g.drawLine(0, 375, 1000, 375);      // draw split screen
-        three.paintIcon(this, g, 250, 400);
+        
+        //if (paintCard == 3)
+            three.paintIcon(this, g, 250, 400);
         
     }
  
