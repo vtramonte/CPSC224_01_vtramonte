@@ -33,6 +33,20 @@ public class Blackjack extends JFrame
     private boolean playerWins = false;
     private boolean dealerWins = false;
     private boolean playAgain = true;
+    private boolean keepCardDrawn3 = false; // flag for keeping card drawn
+    private boolean keepCardDrawnA = false;
+    private boolean keepCardDrawn1 = false;
+    private boolean keepCardDrawn2 = false;
+    private boolean keepCardDrawn4 = false;
+    private boolean keepCardDrawn5 = false;
+    private boolean keepCardDrawn6 = false;
+    private boolean keepCardDrawn7 = false;
+    private boolean keepCardDrawn8 = false;
+    private boolean keepCardDrawn9 = false;
+    private boolean keepCardDrawn10 = false;
+    private boolean keepCardDrawnJ = false;
+    private boolean keepCardDrawnQ = false;
+    private boolean keepCardDrawnK = false;
     
     // panels
     private JPanel dealerPanel;
@@ -78,7 +92,7 @@ public class Blackjack extends JFrame
     ImageIcon ace = new ImageIcon("AC.png");
     ImageIcon two = new ImageIcon("2C.png");
     ImageIcon three = new ImageIcon("3C2.png");
-    ImageIcon four = new ImageIcon("4C.png");
+    ImageIcon four = new ImageIcon("4H.png");
     ImageIcon five = new ImageIcon("5C.png");
     ImageIcon six = new ImageIcon("6C.png");
     ImageIcon seven = new ImageIcon("7C.png");
@@ -203,8 +217,9 @@ public class Blackjack extends JFrame
     {
         Random rand = new Random();
         int drawnCard = rand.nextInt(13)+1;
-        paintCard = drawnCard;
+        paintCard = drawnCard;  // for painting the drawn player card
         
+        repaint();
         
         // create player's first card label
         if (drawCount == 0)
@@ -710,8 +725,16 @@ public class Blackjack extends JFrame
         g.setColor(Color.black);
         g.drawLine(0, 375, 1000, 375);      // draw split screen
         
-        //if (paintCard == 3)
-            three.paintIcon(this, g, 250, 400);
+        if (paintCard == 3 || keepCardDrawn3)
+        {
+            three.paintIcon(this, g, 275, 400);
+            keepCardDrawn3 = true;
+        }
+        if (paintCard == 4 || keepCardDrawn4)
+        {
+            four.paintIcon(this, g, 300, 400);
+            keepCardDrawn4 = true;
+        }
         
     }
  
