@@ -1,14 +1,15 @@
+/*Vincent Tramonte, Vincent Rettke
+ * Final Project
+ * 5/8/19
+ * Creates a BlakcJack GUI for users to play on  
+ * */
+
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.util.Random;
 
-//package blackjack;
 
-/**
- *
- * @author vince
- */
 public class Blackjack extends JFrame
 {
     // player and dealer cards
