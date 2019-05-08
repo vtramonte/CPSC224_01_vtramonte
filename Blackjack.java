@@ -24,6 +24,7 @@ public class Blackjack extends JFrame
     private int pDrawnCards = 0;
     private int drawCount = 0;
     private int compareHands = 1; 
+    public int userChoice; 
 
     int [] playerPaintCard = new int[11];
     int [] dealerPaintCard = new int[11]; 
@@ -107,6 +108,7 @@ public class Blackjack extends JFrame
         getContentPane().setBackground(new Color(0, 122, 0));
       
         dealCards();
+        //userChoice = menu();
         
             
         //pack();    
@@ -417,11 +419,26 @@ public class Blackjack extends JFrame
                 playerWins = true;
         }
         
-        if (dTotal == 21)
+        if (dTotal == 21) {
         	JOptionPane.showMessageDialog(null,"Dealer Wins");
+            userChoice = menu(); 
+    		if(userChoice == 1) {
+    			new Blackjack();
+    			repaint(); 
+    		}
+    		else if(userChoice == 2) {
+                JOptionPane.showMessageDialog(null, "GoodBye!");
+                //break;
+                System.exit(0);
+    		}
+    		else {
+    			JOptionPane.showMessageDialog(null, "Please enter a valid option!");
+    		} 	
+        }
             
-        else 
+        else {
             compareHands = compareHands();
+        }
         
     }
     
@@ -455,6 +472,22 @@ public class Blackjack extends JFrame
             JOptionPane.showMessageDialog(null, "Push.");
             outcome = 3; 
         }
+        
+        userChoice = menu(); 
+		if(userChoice == 1) {
+			new Blackjack();
+			repaint(); 
+		}
+		else if(userChoice == 2) {
+            JOptionPane.showMessageDialog(null, "GoodBye!");
+            //break;
+            System.exit(0);
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "Please enter a valid option!");
+		}       
+        
+        
         return outcome;  
     }
     
@@ -745,23 +778,7 @@ public class Blackjack extends JFrame
 //** MAIN *********************************************************************
     public static void main(String[] args) 
     {
-    	int userChoice; 
-    	new Blackjack();
-    	
-    	while(true) {
-    		userChoice = menu();
-    		
-    		if(userChoice == 1) {
-    			//new Blackjack();
-    		}
-    		else if(userChoice == 2) {
-                JOptionPane.showMessageDialog(null, "GoodBye!");
-                break;    			
-    		}
-    		else {
-    			JOptionPane.showMessageDialog(null, "Please enter a valid option!");
-    		}
-    	}
+    	new Blackjack(); 
     }
     
 }
