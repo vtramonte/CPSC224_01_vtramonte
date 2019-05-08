@@ -54,18 +54,7 @@ public class Blackjack extends JFrame
     private JLabel playerDrawLabel6;
     private JLabel playerDrawLabel7;
     private JLabel playerDrawLabel8; // worst case: 9 draws
-    private JLabel dealerDrawLabel0;
-    private JLabel dealerDrawLabel8;
-    private JLabel dealerDrawLabel1;
-    private JLabel dealerDrawLabel2;
-    private JLabel dealerDrawLabel3;
-    private JLabel dealerDrawLabel4;
-    private JLabel dealerDrawLabel5;
-    private JLabel dealerDrawLabel6;
-    private JLabel dealerDrawLabel7; // worst case: 9 draws
-    private JLabel threeL;
-    
-    
+       
     // buttons
     private JButton hitButton;
     private JButton stayButton;
@@ -156,17 +145,6 @@ public class Blackjack extends JFrame
         else
             pc1Label.setText("" + pCard1);
         
-        // create dealer's first card label
-        if (dCard1 == 11)
-            dc1Label.setText("J");
-        else if (dCard1 == 12)
-            dc1Label.setText("Q");
-        else if (dCard1 == 13)
-            dc1Label.setText("K");
-        else if (dCard1 == 1)
-            dc1Label.setText("A");
-        else
-            dc1Label.setText("" + dCard1);
         
         // create player's second card label
         if (pCard2 == 11)
@@ -179,31 +157,7 @@ public class Blackjack extends JFrame
             pc2Label.setText("A");
         else
             pc2Label.setText("" + pCard2);
-        
-        // create dealer's second card label
-        if (dCard2 == 11)
-            dc2Label.setText("J");
-        else if (dCard2 == 12)
-            dc2Label.setText("Q");
-        else if (dCard2 == 13)
-            dc2Label.setText("K");
-        else if (dCard2 == 1)
-            dc2Label.setText("A");
-        else
-            dc2Label.setText("" + dCard2);
-        
-        if (pCard1 != 1 && pCard1 > 10)
-            pCard1 = 10;
-        
-        if (pCard2 != 1 && pCard2 > 10)
-            pCard2 = 10;
-        
-        if (dCard1 != 1 && dCard1 > 10)
-            dCard1 = 10;
-        
-        if (dCard2 != 1 && dCard2 > 10)
-            dCard2 = 10;
-        
+
         
     }
     
@@ -385,145 +339,62 @@ public class Blackjack extends JFrame
         // create dealer's first card label
         if (drawCount == 0)
         {
-        	dealerPaintCard[2] = drawnCard;
-            if (drawnCard == 11)
-                dealerDrawLabel0.setText("J");
-            else if (drawnCard == 12)
-                dealerDrawLabel0.setText("Q");
-            else if (drawnCard == 13)
-                dealerDrawLabel0.setText("K");
-            else if (drawnCard == 1)
-                dealerDrawLabel0.setText("A");
-            else
-                dealerDrawLabel0.setText("" + drawnCard);
+            dealerPaintCard[2] = drawnCard;
+
         }
         
         // create dealer's second card label
         if (drawCount == 1)
         {
-        	dealerPaintCard[3] = drawnCard;
-            if (drawnCard == 11)
-                dealerDrawLabel1.setText("J");
-            else if (drawnCard == 12)
-                dealerDrawLabel1.setText("Q");
-            else if (drawnCard == 13)
-                dealerDrawLabel1.setText("K");
-            else if (drawnCard == 1)
-                dealerDrawLabel1.setText("A");
-            else
-                dealerDrawLabel1.setText("" + drawnCard);
+            dealerPaintCard[3] = drawnCard;
+
         }
         
         // create dealer's third card label
         if (drawCount == 2)
         {
-        	dealerPaintCard[4] = drawnCard;
-            if (drawnCard == 11)
-                dealerDrawLabel2.setText("J");
-            else if (drawnCard == 12)
-                dealerDrawLabel2.setText("Q");
-            else if (drawnCard == 13)
-                dealerDrawLabel2.setText("K");
-            else if (drawnCard == 1)
-                dealerDrawLabel2.setText("A");
-            else
-                dealerDrawLabel2.setText("" + drawnCard);
+            dealerPaintCard[4] = drawnCard;
+
         }
         
         // create dealer's fourth card label
         if (drawCount == 3)
         {
-        	dealerPaintCard[5] = drawnCard;
-            if (drawnCard == 11)
-                dealerDrawLabel3.setText("J");
-            else if (drawnCard == 12)
-                dealerDrawLabel3.setText("Q");
-            else if (drawnCard == 13)
-                dealerDrawLabel3.setText("K");
-            else if (drawnCard == 1)
-                dealerDrawLabel3.setText("A");
-            else
-                dealerDrawLabel3.setText("" + drawnCard);
+            dealerPaintCard[5] = drawnCard;
+            
         }
         
         // create dealer's fifth card label
         if (drawCount == 4)
         {
-        	dealerPaintCard[6] = drawnCard;
-            if (drawnCard == 11)
-                dealerDrawLabel4.setText("J");
-            else if (drawnCard == 12)
-                dealerDrawLabel4.setText("Q");
-            else if (drawnCard == 13)
-                dealerDrawLabel4.setText("K");
-            else if (drawnCard == 1)
-                dealerDrawLabel4.setText("A");
-            else
-                dealerDrawLabel4.setText("" + drawnCard);
+            dealerPaintCard[6] = drawnCard;
+            
         }
         
         // create dealer's sixth card label
         if (drawCount == 5)
         {
-        	dealerPaintCard[7] = drawnCard;
-            if (drawnCard == 11)
-                dealerDrawLabel5.setText("J");
-            else if (drawnCard == 12)
-                dealerDrawLabel5.setText("Q");
-            else if (drawnCard == 13)
-                dealerDrawLabel5.setText("K");
-            else if (drawnCard == 1)
-                dealerDrawLabel5.setText("A");
-            else
-                dealerDrawLabel5.setText("" + drawnCard);
+            dealerPaintCard[7] = drawnCard;     
         }
         
         // create dealer's seventh card label
         if (drawCount == 6)
         {
-        	dealerPaintCard[8] = drawnCard;
-            if (drawnCard == 11)
-                dealerDrawLabel6.setText("J");
-            else if (drawnCard == 12)
-                dealerDrawLabel6.setText("Q");
-            else if (drawnCard == 13)
-                dealerDrawLabel6.setText("K");
-            else if (drawnCard == 1)
-                dealerDrawLabel6.setText("A");
-            else
-                dealerDrawLabel6.setText("" + drawnCard);
+            dealerPaintCard[8] = drawnCard;
+           
         }
         
         // create dealer's eighth card label
         if (drawCount == 7)
         {
-        	dealerPaintCard[9] = drawnCard;
-            if (drawnCard == 11)
-                dealerDrawLabel7.setText("J");
-            else if (drawnCard == 12)
-                dealerDrawLabel7.setText("Q");
-            else if (drawnCard == 13)
-                dealerDrawLabel7.setText("K");
-            else if (drawnCard == 1)
-                dealerDrawLabel7.setText("A");
-            else
-                dealerDrawLabel7.setText("" + drawnCard);
+            dealerPaintCard[9] = drawnCard;
+           
         }
         
         // create dealer's ninth card label
         if (drawCount == 8)
         {
-        	dealerPaintCard[10] = drawnCard;
-            if (drawnCard == 11)
-                dealerDrawLabel8.setText("J");
-            else if (drawnCard == 12)
-                dealerDrawLabel8.setText("Q");
-            else if (drawnCard == 13)
-                dealerDrawLabel8.setText("K");
-            else if (drawnCard == 1)
-                dealerDrawLabel8.setText("A");
-            else
-                dealerDrawLabel8.setText("" + drawnCard);
+            dealerPaintCard[10] = drawnCard;
         }
         repaint();         
        
@@ -591,7 +462,6 @@ public class Blackjack extends JFrame
         threeL.setIcon(three);
         playerCardsPanel.add(threeL);
         
-
         pack();
         */
         
@@ -603,32 +473,12 @@ public class Blackjack extends JFrame
         
         // labels
         dealerLabel = new JLabel("Dealer: ");
-        dc1Label = new JLabel(" 0");
-        dc2Label = new JLabel(" 0");
-        dealerDrawLabel0 = new JLabel();
-        dealerDrawLabel1 = new JLabel();
-        dealerDrawLabel2 = new JLabel();
-        dealerDrawLabel3 = new JLabel();
-        dealerDrawLabel4 = new JLabel();
-        dealerDrawLabel5 = new JLabel();
-        dealerDrawLabel6 = new JLabel();
-        dealerDrawLabel7 = new JLabel();
-        dealerDrawLabel8 = new JLabel();
+        
         
         
         // add labels to panel
         dealerPanel.add(dealerLabel);
-        dealerPanel.add(dc1Label);
-        dealerPanel.add(dc2Label);
-        dealerPanel.add(dealerDrawLabel0);
-        dealerPanel.add(dealerDrawLabel1);
-        dealerPanel.add(dealerDrawLabel2);
-        dealerPanel.add(dealerDrawLabel3);
-        dealerPanel.add(dealerDrawLabel4);
-        dealerPanel.add(dealerDrawLabel5);
-        dealerPanel.add(dealerDrawLabel6);
-        dealerPanel.add(dealerDrawLabel7);
-        dealerPanel.add(dealerDrawLabel8);
+       
     
         
         	
@@ -718,7 +568,6 @@ public class Blackjack extends JFrame
                                           
                     case "Stay":
                     	dealerPaintCard[0] = dCard1;
-			repaint(); 
                         drawCount = 0;
                         dealersTurn();
                         
