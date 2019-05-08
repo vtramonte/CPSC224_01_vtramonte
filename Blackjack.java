@@ -25,6 +25,7 @@ public class Blackjack extends JFrame
     private int pDrawnCards = 0;
     private int drawCount = 0;
     private int compareHands = 1; 
+    private int totalMoney = 500;
     public int userChoice; 
 
     int [] playerPaintCard = new int[11];
@@ -40,6 +41,7 @@ public class Blackjack extends JFrame
     private JPanel youPanel;
     private JPanel playerButtonPanel;
     private JPanel playerCardsPanel;
+    private JPanel bankPanel;
     
     // labels
     private JLabel dealerLabel;
@@ -57,6 +59,11 @@ public class Blackjack extends JFrame
     private JLabel playerDrawLabel6;
     private JLabel playerDrawLabel7;
     private JLabel playerDrawLabel8; // worst case: 9 draws
+    private JLabel bankLabel;
+    private JLabel betLabel;
+    
+    // text fields
+    private JTextField betTextField;
        
     // buttons
     private JButton hitButton;
@@ -95,17 +102,20 @@ public class Blackjack extends JFrame
         buildDealerPanel();
         buildPlayerPanel();
         buildButtonsPanel();
+        buildBankPanel();
         
         // add panel to frame
-	    add(dealerPanel, BorderLayout.NORTH);
+	add(dealerPanel, BorderLayout.NORTH);
         add(playerButtonPanel, BorderLayout.EAST);
-	    add(youPanel, BorderLayout.SOUTH);	
-	    //add(playerCardsPanel, BorderLayout.CENTER);
+	add(youPanel, BorderLayout.SOUTH);	
+        add(bankPanel, BorderLayout.WEST);
+	//add(playerCardsPanel, BorderLayout.CENTER);
 	
-	    //make the panels green
+	//make the panels green
         dealerPanel.setBackground(new Color(0, 122, 0));
         youPanel.setBackground(new Color(0, 122, 0));
         playerButtonPanel.setBackground(new Color(0, 122, 0));
+        bankPanel.setBackground(new Color(0, 122, 0));
         getContentPane().setBackground(new Color(0, 122, 0));
       
         dealCards();
@@ -161,8 +171,24 @@ public class Blackjack extends JFrame
             pc2Label.setText("A");
         else
             pc2Label.setText("" + pCard2);
-
         
+        if (pCard1 > 10)
+            pCard1 = 10;
+        
+        if (pCard2 > 10)
+            pCard2 = 10;
+        
+        if (dCard1 > 10)
+            dCard1 = 10;
+        
+        if (dCard2 > 10)
+            dCard2 = 10;
+
+        if ((pCard1 + pCard2) == 21)
+        {
+            JOptionPane.showMessageDialog(null,"Blackjack! Player wins the hand");
+            playerWins = true;
+        }
     }
     
     public void drawPlayerCard()        // hit
@@ -455,17 +481,21 @@ public class Blackjack extends JFrame
     	int outcome = 1; 
         if (dealerWins)
         {
+            totalMoney -= 20;
             // player busted. This is already accounted for
         }
         else if (playerWins) {
+            totalMoney += 20;
             JOptionPane.showMessageDialog(null, "Player wins. Dealer busted");
         	outcome = 2;
         }
         else if (pTotal > dTotal) {
+            totalMoney += 20;
             JOptionPane.showMessageDialog(null, "Player wins. Dealer pays player.");
             outcome = 2;
         }
         else if (dTotal > pTotal) {
+            totalMoney -= 20;
             JOptionPane.showMessageDialog(null, "Dealer wins. Dealer takes bet.");
             outcome = 1; 
         }
@@ -473,10 +503,12 @@ public class Blackjack extends JFrame
             JOptionPane.showMessageDialog(null, "Push.");
             outcome = 3; 
         }
+        bankLabel.setText("Bank: " + totalMoney);
         
         userChoice = menu(); 
 		if(userChoice == 1) {
 			new Blackjack();
+                        // idk how to keep the bank
 			repaint(); 
 		}
 		else if(userChoice == 2) {
@@ -511,6 +543,7 @@ public class Blackjack extends JFrame
         */
         
     }
+    
     private void buildDealerPanel()
     {
         // create new panel
@@ -518,8 +551,8 @@ public class Blackjack extends JFrame
         
         // labels
         dealerLabel = new JLabel("Dealer: ");
-        
-        
+        dealerLabel.setFont(new Font("Courier New", Font.BOLD, 20));
+        dealerLabel.setForeground(Color.RED);
         
         // add labels to panel
         dealerPanel.add(dealerLabel);
@@ -536,6 +569,8 @@ public class Blackjack extends JFrame
         
         // labels
         youLabel = new JLabel("You: ");
+        youLabel.setFont(new Font("Courier New", Font.BOLD, 20));
+        youLabel.setForeground(Color.RED);
         pc1Label = new JLabel(" 0");
         pc2Label = new JLabel(" 0");
         playerDrawLabel1 = new JLabel();
@@ -566,6 +601,29 @@ public class Blackjack extends JFrame
         
         
               
+    }
+    
+    private void buildBankPanel()
+    {
+        // create new panel
+        bankPanel = new JPanel();
+        //bankPanel.setLayout(new GridLayout(0,1));
+        
+        bankLabel = new JLabel();
+        betLabel = new JLabel();
+        betLabel.setText("Enter Bet Size:");
+        
+        betTextField = new JTextField(10);
+        
+        bankPanel.add(bankLabel);
+        //bankPanel.add(betLabel);
+        //bankPanel.add(betTextField);
+        
+        bankLabel.setText("Bank: " + totalMoney);
+        bankLabel.setFont(new Font("Courier New", Font.BOLD, 30));
+        
+        
+        
     }
     
     private void buildButtonsPanel()
