@@ -23,6 +23,7 @@ public class Blackjack extends JFrame
     private int dDrawnCards = 0;
     private int pDrawnCards = 0;
     private int drawCount = 0;
+    private int compareHands = 1; 
 
     int [] playerPaintCard = new int[11];
     int [] dealerPaintCard = new int[11]; 
@@ -324,7 +325,7 @@ public class Blackjack extends JFrame
         {
             dealerWins = true;
             JOptionPane.showMessageDialog(null,"Dealer wins. Player busted.");
-            compareHands();
+            compareHands = compareHands();
         }
         drawCount++;
          
@@ -420,7 +421,7 @@ public class Blackjack extends JFrame
         	JOptionPane.showMessageDialog(null,"Dealer Wins");
             
         else 
-            compareHands();
+            compareHands = compareHands();
         
     }
     
@@ -431,20 +432,30 @@ public class Blackjack extends JFrame
         System.out.println("ptotal: " + pTotal + " dTotal: " + dTotal);
     }
     
-    public void compareHands()
+    public int compareHands()
     {
+    	int outcome = 1; 
         if (dealerWins)
         {
             // player busted. This is already accounted for
         }
-        else if (playerWins)
+        else if (playerWins) {
             JOptionPane.showMessageDialog(null, "Player wins. Dealer busted");
-        else if (pTotal > dTotal)
+        	outcome = 2;
+        }
+        else if (pTotal > dTotal) {
             JOptionPane.showMessageDialog(null, "Player wins. Dealer pays player.");
-        else if (dTotal > pTotal)
+            outcome = 2;
+        }
+        else if (dTotal > pTotal) {
             JOptionPane.showMessageDialog(null, "Dealer wins. Dealer takes bet.");
-        else
+            outcome = 1; 
+        }
+        else {
             JOptionPane.showMessageDialog(null, "Push.");
+            outcome = 3; 
+        }
+        return outcome;  
     }
     
 //*** PANEL CREATION ***********************************************************
@@ -719,12 +730,38 @@ public class Blackjack extends JFrame
         }         
        
     }
+    
+    public static int menu() {
+        String userInputNum;
+        int userChoice; 
+        
+        userInputNum = JOptionPane.showInputDialog(null, "Enter 1 to play a hand of BlackJack\n" +
+        "Enter 2 to Exit Game");
+        userChoice = Integer.parseInt (userInputNum); 
+        return userChoice; 
+    }     
 
  
 //** MAIN *********************************************************************
     public static void main(String[] args) 
     {
+    	int userChoice; 
     	new Blackjack();
+    	
+    	while(true) {
+    		userChoice = menu();
+    		
+    		if(userChoice == 1) {
+    			//new Blackjack();
+    		}
+    		else if(userChoice == 2) {
+                JOptionPane.showMessageDialog(null, "GoodBye!");
+                break;    			
+    		}
+    		else {
+    			JOptionPane.showMessageDialog(null, "Please enter a valid option!");
+    		}
+    	}
     }
     
 }
