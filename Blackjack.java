@@ -568,6 +568,7 @@ public class Blackjack extends JFrame
                                           
                     case "Stay":
                     	dealerPaintCard[0] = dCard1;
+			repaint();
                         drawCount = 0;
                         dealersTurn();
                         
